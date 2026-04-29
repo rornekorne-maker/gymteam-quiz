@@ -52,208 +52,103 @@ body {
 
 /* ─── DESKTOP ADAPTIVE ─── */
 @media (min-width: 768px) {
-  .top-bar { padding: 18px 40px; }
-  .top-bar img { height: 32px; }
-  .top-tag { font-size: 11px; }
+  .top-bar { padding: 16px 32px; }
+  .top-bar img { height: 30px; }
 
-  /* HERO — split layout */
+  /* landing hero — split layout */
   .lp-hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: stretch;
-  }
-  .lp-hero-img-wrap {
-    height: 100%;
-    min-height: 0;
-    grid-column: 2;
-    grid-row: 1;
-    overflow: hidden;
+    min-height: 560px;
   }
   .lp-hero-img {
-    width: 100%;
     height: 100%;
-    object-position: 50% 25%;
-    filter: brightness(0.78) contrast(1.05);
+    min-height: 560px;
+    object-position: 40% 25%;
+    filter: brightness(0.75) contrast(1.05);
   }
   .lp-hero-overlay {
-    background: linear-gradient(90deg, var(--black) 0%, rgba(14,14,16,0.45) 25%, rgba(14,14,16,0) 100%);
+    background: linear-gradient(90deg, var(--black) 0%, rgba(14,14,16,0.4) 100%);
   }
   .lp-hero-content {
-    padding: 32px 96px 56px 0;
-    margin: 0 0 0 auto;
+    padding: 64px 56px;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     grid-row: 1;
     grid-column: 1;
     z-index: 3;
-    width: 100%;
     max-width: 600px;
   }
-  .lp-hero-top { margin-bottom: 40px; }
-  .lp-hero-logo { height: 32px; }
-  .lp-h1 { font-size: 52px; line-height: 0.96; margin-bottom: 22px; }
-  .lp-hero-sub { font-size: 17px; margin-bottom: 28px; max-width: 520px; }
-  .lp-hero-btn { max-width: 360px; }
-  .lp-hero-bullets {
-    flex-direction: row;
-    gap: 24px;
-    margin-top: 24px;
-    flex-wrap: wrap;
-  }
-  .lp-hero-bullets li { font-size: 13px; }
+  .lp-h1 { font-size: 48px; line-height: 1; }
+  .lp-hero-content .btn-primary { max-width: 360px; }
 
-  /* PROBLEMS + GUIDE — same row, wide container */
-  .lp-problems-guide { padding: 64px 0; }
-  .lp-container {
-    max-width: 1320px;
-    padding: 0 56px;
-  }
-  .lp-h2 { font-size: 44px; margin-bottom: 32px; }
-  .lp-section-label { font-size: 11px; margin-bottom: 18px; }
-
+  .lp-section { padding: 64px 32px; }
+  .lp-section > * { max-width: 720px; margin-left: auto; margin-right: auto; }
+  .lp-h2 { font-size: 38px; }
   .prob-list {
     flex-direction: row;
-    gap: 16px;
-    margin-bottom: 36px;
+    gap: 14px;
   }
-  .prob-card {
-    flex: 1;
-    padding: 24px;
-    flex-direction: row;
-    align-items: center;
-    min-height: 96px;
-  }
-  .prob-icon { width: 48px; height: 48px; font-size: 24px; }
-  .prob-text { font-size: 15px; }
+  .prob-card { flex: 1; padding: 20px; flex-direction: column; align-items: flex-start; }
+  .prob-icon { margin-bottom: 8px; }
+  .prob-text { font-size: 14.5px; }
 
-  .lp-guide-text {
-    font-size: 17px;
-    padding: 24px 28px;
-    line-height: 1.6;
-  }
+  .check-list { gap: 18px; }
+  .lp-plan .btn-primary { max-width: 420px; margin: 0 auto; }
+  .lp-success { max-width: 720px; margin: 0 auto 32px; }
 
-  /* PLAN — two columns */
-  .lp-plan { padding: 72px 0; }
-  .lp-plan-grid {
-    flex-direction: row;
-    gap: 64px;
-    align-items: flex-start;
-  }
-  .lp-plan-left {
-    flex: 1;
-    position: sticky;
-    top: 100px;
-  }
-  .lp-plan-right {
-    flex: 1.1;
-  }
-  .lp-plan-intro { font-size: 17px; margin-bottom: 28px; }
-  .lp-plan-btn {
-    max-width: 320px;
-    margin-bottom: 24px;
-  }
-  .lp-avoid-text { font-size: 14px; }
-
-  .check-list { gap: 14px; }
-  .check-row { padding: 20px 24px; }
-  .check-mark { width: 30px; height: 30px; }
-  .check-mark svg { width: 14px; height: 14px; }
-  .check-title { font-size: 17px; margin-bottom: 6px; }
-  .check-sub { font-size: 14px; }
-  .lp-success-inline { padding: 18px 24px; }
-  .lp-success-text { font-size: 14px; }
-
-  /* QUIZ — компактная карточка по центру */
-  .quiz-progress-bar { top: 68px; height: 5px; }
-  .quiz-wrap {
-    max-width: 640px;
-    margin: 48px auto;
-    padding: 64px 56px 56px;
-    background: var(--white);
-    border: 1px solid var(--gray-100);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.04);
-  }
-  .quiz-question { font-size: 32px; line-height: 1.1; margin-bottom: 32px; }
-  .quiz-step { font-size: 11px; margin-bottom: 18px; }
-  .options { gap: 10px; margin-bottom: 32px; }
-  .option-card { padding: 18px 22px; }
-  .option-text { font-size: 15.5px; }
+  /* quiz */
+  .quiz-progress-bar { top: 62px; height: 5px; }
+  .quiz-wrap { max-width: 640px; margin: 0 auto; padding: 56px 32px 64px; }
+  .quiz-question { font-size: 36px; line-height: 1.05; margin-bottom: 32px; }
+  .quiz-step { font-size: 12px; margin-bottom: 18px; }
+  .options { gap: 12px; margin-bottom: 32px; }
+  .option-card { padding: 18px 20px; }
+  .option-text { font-size: 16px; }
   .field-input { padding: 18px 22px; font-size: 17px; }
+  .quiz-wrap .btn-primary { max-width: 360px; }
   #step-question .btn-primary,
   #step-name .btn-primary,
-  #step-email .btn-primary { max-width: 100%; }
+  #step-email .btn-primary { max-width: 360px; }
 
-  .quiz-topic-banner { padding: 14px 40px; font-size: 12px; }
+  /* quiz topic banner */
+  .quiz-topic-banner { padding: 14px 32px; }
 
-  /* RESULT */
-  .result-hero {
-    padding: 72px 56px;
-  }
-  .result-hero-inner {
-    max-width: 1320px;
-    margin: 0 auto;
-  }
-  .result-eyebrow { font-size: 11px; }
-  .result-greeting { font-size: 32px; max-width: 720px; }
-  .result-type-name { font-size: 64px; }
-  .result-diag { font-size: 17px; max-width: 720px; line-height: 1.65; }
+  /* result */
+  .result-hero { padding: 64px 32px; text-align: left; }
+  .result-hero > * { max-width: 720px; margin-left: auto; margin-right: auto; }
+  .result-type-name { font-size: 56px; }
+  .result-greeting { font-size: 32px; }
+  .result-diag { font-size: 17px; max-width: 640px; }
 
-  .result-card-wrap,
-  .result-bridge-wrap {
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 56px;
-  }
-  .result-card {
-    margin: -1px 0 0;
-    padding: 40px;
-  }
-  .result-card h3 { font-size: 26px; margin-bottom: 12px; }
-  .result-card p { font-size: 16px; max-width: 640px; margin-bottom: 24px; }
-  .result-card .btn-secondary { max-width: 320px; }
-
+  .result-card,
   .result-bridge {
-    margin: 16px 0 0;
-    padding: 56px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 32px;
   }
-  .bridge-eyebrow { font-size: 11px; margin-bottom: 14px; }
-  .bridge-h2 { font-size: 38px; margin-bottom: 18px; max-width: 720px; }
-  .bridge-text { font-size: 17px; max-width: 720px; margin-bottom: 28px; }
-  .course-features {
-    flex-direction: row;
-    gap: 18px;
-    padding: 24px;
-    margin-bottom: 28px;
-  }
-  .course-feat-row { flex: 1; flex-direction: column; align-items: flex-start; gap: 8px; font-size: 14px; }
-  .course-feat-row .icon { font-size: 24px; }
-  .bridge-personal { padding: 20px 24px; max-width: 720px; }
-  .bridge-personal-text { font-size: 15px; }
-  .result-bridge .btn-primary { max-width: 380px; }
+  .result-card { margin-top: -1px; }
+  .result-card h3 { font-size: 26px; }
+  .bridge-h2 { font-size: 32px; }
+  .result-bridge .btn-primary { max-width: 420px; }
 
-  .proof-strip { padding: 32px 40px; }
-  .proof-num { font-size: 40px; }
-  .proof-txt { font-size: 13px; }
+  .proof-strip { padding: 28px; }
+  .proof-num { font-size: 36px; }
 
-  .foot { padding: 32px 40px; }
+  .foot { padding: 28px; }
 }
 
 @media (min-width: 1100px) {
-  .lp-hero-content { padding: 40px 96px 80px 0; }
-  .lp-h1 { font-size: 64px; }
-  .lp-hero-sub { font-size: 18px; }
-  .lp-h2 { font-size: 52px; }
-  .quiz-question { font-size: 36px; }
-  .result-type-name { font-size: 76px; }
-  .bridge-h2 { font-size: 44px; }
-}
-
-@media (min-width: 1400px) {
-  .lp-hero-content {
-    padding: 48px 120px 88px 0;
-    max-width: 640px;
-  }
+  .lp-hero-content { padding: 80px 80px 80px 96px; }
+  .lp-h1 { font-size: 56px; }
+  .lp-section { padding: 80px 32px; }
+  .lp-h2 { font-size: 44px; }
+  .quiz-question { font-size: 40px; }
+  .result-type-name { font-size: 68px; }
 }
 
 /* ─── HEADER ─── */
@@ -276,51 +171,30 @@ body {
   letter-spacing: 0.1em;
 }
 
-/* hide top-bar on landing — logo is embedded into hero */
-body.is-landing .top-bar { display: none; }
-
-/* embedded logo on hero */
-.lp-hero-top {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 28px;
-  flex-wrap: wrap;
-}
-.lp-hero-logo { height: 28px; display: block; flex-shrink: 0; }
-.lp-hero-top .lp-eyebrow { margin-bottom: 0; }
-
-/* ─── LANDING — MOBILE-FIRST BASE ─── */
-
-/* HERO */
+/* ─── LANDING (screen-0) ─── */
 .lp-hero {
   background: var(--black);
   position: relative;
   overflow: hidden;
 }
-.lp-hero-img-wrap {
-  position: relative;
-  width: 100%;
-  height: 360px;
-}
 .lp-hero-img {
   width: 100%;
-  height: 100%;
+  height: 360px;
   object-fit: cover;
   object-position: 35% 30%;
   display: block;
-  filter: brightness(0.6) contrast(1.05) saturate(0.9);
+  filter: brightness(0.55) contrast(1.1) saturate(0.85);
 }
 .lp-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(14,14,16,0.15) 0%, rgba(14,14,16,0.65) 75%, var(--black) 100%);
+  background: linear-gradient(180deg, rgba(14,14,16,0.2) 0%, rgba(14,14,16,0.7) 70%, var(--black) 100%);
 }
 .lp-hero-content {
-  padding: 0 20px 32px;
+  padding: 24px 20px 28px;
   position: relative;
   z-index: 2;
-  margin-top: -110px;
+  margin-top: -120px;
 }
 .lp-eyebrow {
   display: inline-block;
@@ -341,33 +215,10 @@ body.is-landing .top-bar { display: none; }
   text-transform: uppercase;
   line-height: 0.98;
   color: var(--white);
-  margin-bottom: 16px;
+  margin-bottom: 22px;
   letter-spacing: -0.01em;
 }
 .lp-h1 .accent { color: var(--red); }
-.lp-hero-sub {
-  font-size: 15px;
-  line-height: 1.55;
-  color: rgba(255,255,255,0.75);
-  margin-bottom: 22px;
-  font-weight: 500;
-}
-.lp-hero-bullets {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 18px;
-}
-.lp-hero-bullets li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.65);
-}
-.lp-hero-bullets li span { font-size: 16px; }
 
 .btn-primary {
   display: flex;
@@ -394,13 +245,12 @@ body.is-landing .top-bar { display: none; }
 .btn-primary:disabled { background: var(--gray-200); color: var(--gray-400); cursor: not-allowed; }
 .btn-primary svg { width: 20px; height: 20px; flex-shrink: 0; }
 
-/* universal container for landing sections */
-.lp-container {
-  max-width: 420px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* problems */
+.lp-section { padding: 28px 20px; }
+.lp-problems {
+  background: var(--red-soft);
+  border-top: 4px solid var(--red);
 }
-
 .lp-section-label {
   font-size: 10px;
   font-weight: 800;
@@ -412,109 +262,77 @@ body.is-landing .top-bar { display: none; }
 .lp-h2 {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 26px;
   text-transform: uppercase;
   line-height: 1;
   color: var(--black);
-  margin-bottom: 24px;
-  letter-spacing: -0.005em;
+  margin-bottom: 22px;
 }
 .lp-h2 .accent { color: var(--red); }
 
-/* PROBLEMS + GUIDE — combined dark section */
-.lp-problems-guide {
-  background: var(--red-soft);
-  padding: 36px 0;
-  border-top: 4px solid var(--red);
-  border-bottom: 1px solid #FFD8DD;
-}
-.prob-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 28px;
-}
+.prob-list { display: flex; flex-direction: column; gap: 10px; }
 .prob-card {
   background: var(--white);
-  padding: 16px;
+  padding: 14px 14px 14px 14px;
   display: flex;
   align-items: center;
   gap: 14px;
   border-left: 3px solid var(--red);
 }
 .prob-icon {
-  width: 40px; height: 40px;
+  width: 38px; height: 38px;
   background: var(--red-soft);
   display: flex; align-items: center; justify-content: center;
   font-size: 20px;
   flex-shrink: 0;
 }
-.prob-text { font-size: 14px; font-weight: 600; color: #2A1015; line-height: 1.4; }
+.prob-text { font-size: 13.5px; font-weight: 600; color: #2A1015; line-height: 1.35; }
 
-.lp-guide-text {
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--black);
-  padding: 18px 16px;
-  background: var(--white);
-  border-left: 3px solid var(--black);
-}
+/* guide */
+.lp-guide { background: var(--gray-50); }
+.lp-guide-text { font-size: 15px; line-height: 1.65; color: var(--black); }
 .lp-guide-text strong { font-weight: 800; }
 
-/* PLAN section */
-.lp-plan {
-  background: var(--white);
-  padding: 36px 0;
-}
-.lp-plan-grid { display: flex; flex-direction: column; gap: 24px; }
-.lp-plan-intro {
-  font-size: 15px;
-  color: var(--gray-600);
-  margin-bottom: 22px;
-  font-weight: 500;
-  line-height: 1.55;
-}
-.lp-plan-btn { margin-bottom: 18px; }
-.lp-avoid-text {
-  font-size: 13px;
-  color: var(--gray-600);
-  line-height: 1.55;
-  text-align: left;
-}
-.lp-avoid-text strong { color: var(--red); font-weight: 800; }
-
-.check-list { display: flex; flex-direction: column; gap: 16px; }
-.check-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 16px;
-  background: var(--gray-50);
-  border-left: 3px solid var(--black);
-}
+/* plan */
+.lp-plan { background: var(--white); padding-bottom: 24px; }
+.lp-plan-intro { font-size: 14px; color: var(--gray-600); margin-bottom: 18px; font-weight: 500; }
+.check-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 26px; }
+.check-row { display: flex; align-items: flex-start; gap: 12px; }
 .check-mark {
-  width: 26px; height: 26px;
+  width: 24px; height: 24px;
   background: var(--black);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
   margin-top: 1px;
 }
-.check-mark svg { width: 13px; height: 13px; }
+.check-mark svg { width: 12px; height: 12px; }
 .check-body { flex: 1; }
-.check-title { font-size: 15px; font-weight: 700; color: var(--black); line-height: 1.35; margin-bottom: 4px; }
-.check-sub { font-size: 13px; color: var(--gray-600); font-weight: 500; line-height: 1.5; }
+.check-title { font-size: 14px; font-weight: 700; color: var(--black); line-height: 1.35; margin-bottom: 2px; }
+.check-sub { font-size: 12.5px; color: var(--gray-600); font-weight: 500; line-height: 1.4; }
 
-.lp-success-inline {
+/* avoid */
+.lp-avoid {
+  padding: 16px 20px;
+  background: var(--white);
+  text-align: center;
+  border-top: 1px solid var(--gray-100);
+}
+.lp-avoid-text { font-size: 12px; color: var(--gray-600); line-height: 1.55; }
+.lp-avoid-text strong { color: var(--red); font-weight: 800; }
+
+/* success */
+.lp-success {
+  margin: 0 20px 24px;
   background: var(--green-bg);
-  padding: 16px;
+  padding: 14px 16px;
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 10px;
   border-left: 3px solid var(--green);
 }
-.lp-success-star { font-size: 20px; line-height: 1; flex-shrink: 0; }
-.lp-success-text { font-size: 13px; font-weight: 600; color: #0F3D1F; line-height: 1.5; }
+.lp-success-star { font-size: 18px; line-height: 1; flex-shrink: 0; }
+.lp-success-text { font-size: 12.5px; font-weight: 600; color: #0F3D1F; line-height: 1.5; }
 
 /* ─── QUIZ ─── */
 .quiz-bg {
@@ -564,18 +382,7 @@ body.is-landing .top-bar { display: none; }
   margin-left: 4px;
 }
 
-/* квиз: серый фон + центрированная карточка */
-#screen-quiz {
-  background: var(--gray-50);
-  min-height: 100vh;
-}
-
-.quiz-wrap {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 28px 20px 36px;
-  background: var(--white);
-}
+.quiz-wrap { padding: 28px 20px 36px; }
 .quiz-step {
   font-family: 'Oswald', sans-serif;
   font-size: 11px;
@@ -738,12 +545,9 @@ body.is-landing .top-bar { display: none; }
 }
 .result-diag strong { color: var(--white); font-weight: 700; }
 
-.result-card-wrap,
-.result-bridge-wrap {
-  padding: 0 20px;
-}
 .result-card {
   background: var(--white);
+  margin: 0 20px;
   padding: 24px 20px;
   border-top: 4px solid var(--red);
   margin-top: -1px;
@@ -789,7 +593,7 @@ body.is-landing .top-bar { display: none; }
 
 .result-bridge {
   background: var(--white);
-  margin-top: 16px;
+  margin: 16px 20px 0;
   padding: 24px 20px;
   border-top: 1px solid var(--gray-100);
 }
@@ -960,107 +764,93 @@ body.is-landing .top-bar { display: none; }
 <!-- ═══════════════ LANDING ═══════════════ -->
 <section class="screen active" id="screen-landing">
 
-  <!-- HERO -->
   <div class="lp-hero">
-    <div class="lp-hero-img-wrap">
-      <img src="hero.png" alt="Женщина перед зеркалом" class="lp-hero-img">
-      <div class="lp-hero-overlay"></div>
-    </div>
+    <img src="hero.png" alt="Женщина дома, уставший взгляд" class="lp-hero-img">
+    <div class="lp-hero-overlay"></div>
     <div class="lp-hero-content">
-      <div class="lp-hero-top">
-        <img src="logo.svg" alt="GymTeam" class="lp-hero-logo">
-        <span class="lp-eyebrow">Бесплатная диагностика</span>
-      </div>
+      <span class="lp-eyebrow">Бесплатная диагностика</span>
       <h1 class="lp-h1">Узнай, почему твой жир <span class="accent">не уходит</span>, даже когда ты всё делаешь правильно</h1>
-      <p class="lp-hero-sub">2 минуты на тест — и ты получишь свой тип жиросжигания, PDF-гайд и план, что делать дальше. Бесплатно.</p>
-      <button class="btn-primary lp-hero-btn" onclick="startQuiz()">
+      <button class="btn-primary" onclick="startQuiz()">
         Пройти тест
         <svg viewBox="0 0 20 20" fill="none">
           <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
         </svg>
       </button>
-      <ul class="lp-hero-bullets">
-        <li><span>⚡</span> Занимает 2 минуты</li>
-        <li><span>🔒</span> Без оплаты и спама</li>
-        <li><span>🎁</span> + PDF в подарок</li>
-      </ul>
     </div>
   </div>
 
-  <!-- ПРОБЛЕМА + ПРОВОДНИК (объединено в одну секцию на тёмном) -->
-  <div class="lp-problems-guide">
-    <div class="lp-container">
-      <div class="lp-section-label" style="color: var(--red);">Узнаёшь себя?</div>
-      <h2 class="lp-h2">Ты <span class="accent">не одна</span>, кто застрял</h2>
-      <div class="prob-list">
-        <div class="prob-card">
-          <div class="prob-icon">📉</div>
-          <div class="prob-text">Вес стоит неделями — даже при правильном питании</div>
-        </div>
-        <div class="prob-card">
-          <div class="prob-icon">😞</div>
-          <div class="prob-text">«Почему у других получается, а у меня нет?»</div>
-        </div>
-        <div class="prob-card">
-          <div class="prob-icon">🍕</div>
-          <div class="prob-text">Вечерние срывы и чувство вины после</div>
-        </div>
+  <div class="lp-section lp-problems">
+    <div class="lp-section-label">Узнаёшь себя?</div>
+    <h2 class="lp-h2">Ты <span class="accent">не одна</span>, кто застрял</h2>
+    <div class="prob-list">
+      <div class="prob-card">
+        <div class="prob-icon">📉</div>
+        <div class="prob-text">Вес стоит неделями — даже при правильном питании</div>
       </div>
-      <p class="lp-guide-text"><strong>Тебя понимают.</strong> Этот тест составили тренеры, которые 15 лет ищут причину, а не вешают ярлык «ленивая».</p>
+      <div class="prob-card">
+        <div class="prob-icon">😞</div>
+        <div class="prob-text">«Почему у других получается, а у меня нет?»</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">🍕</div>
+        <div class="prob-text">Вечерние срывы и чувство вины после</div>
+      </div>
     </div>
   </div>
 
-  <!-- ПЛАН (двухколоночный) -->
-  <div class="lp-plan">
-    <div class="lp-container lp-plan-grid">
-      <div class="lp-plan-left">
-        <div class="lp-section-label" style="color: var(--gray-600);">Что получишь</div>
-        <h2 class="lp-h2">2 минуты — <span class="accent">и всё ясно</span></h2>
-        <p class="lp-plan-intro">Пройди короткий тест и узнай три вещи, которые сдвинут тебя с мёртвой точки:</p>
-        <button class="btn-primary lp-plan-btn" onclick="startQuiz()">
-          Пройти тест
-          <svg viewBox="0 0 20 20" fill="none">
-            <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
-          </svg>
-        </button>
-        <p class="lp-avoid-text"><strong>Не начинай ещё одну диету,</strong> пока не узнаешь свой тип жиросжигания. Без диагностики любой план — лотерея.</p>
+  <div class="lp-section lp-guide">
+    <div class="lp-section-label" style="color: var(--gray-600);">Ты не одна</div>
+    <p class="lp-guide-text"><strong>Тебя понимают.</strong> Этот тест составили тренеры, которые 15 лет ищут причину, а не вешают ярлык «ленивая».</p>
+  </div>
+
+  <div class="lp-section lp-plan">
+    <div class="lp-section-label" style="color: var(--gray-600);">Что получишь</div>
+    <h2 class="lp-h2">2 минуты — <span class="accent">и всё ясно</span></h2>
+    <p class="lp-plan-intro">Пройди короткий тест и узнай:</p>
+    <div class="check-list">
+      <div class="check-row">
+        <div class="check-mark">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.7" stroke-linecap="square"/></svg>
+        </div>
+        <div class="check-body">
+          <div class="check-title">Какой у тебя тип жиросжигания</div>
+          <div class="check-sub">И почему прошлые методы не работали</div>
+        </div>
       </div>
-      <div class="lp-plan-right">
-        <div class="check-list">
-          <div class="check-row">
-            <div class="check-mark">
-              <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.7" stroke-linecap="square"/></svg>
-            </div>
-            <div class="check-body">
-              <div class="check-title">Какой у тебя тип жиросжигания</div>
-              <div class="check-sub">И почему прошлые методы не работали именно у тебя</div>
-            </div>
-          </div>
-          <div class="check-row">
-            <div class="check-mark">
-              <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.7" stroke-linecap="square"/></svg>
-            </div>
-            <div class="check-body">
-              <div class="check-title">5 продуктов, которые тайно убивают талию</div>
-              <div class="check-sub">PDF-гайд от тренеров с конкретным списком и заменами — бесплатно</div>
-            </div>
-          </div>
-          <div class="check-row">
-            <div class="check-mark">
-              <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.7" stroke-linecap="square"/></svg>
-            </div>
-            <div class="check-body">
-              <div class="check-title">Что делать именно в твоём случае</div>
-              <div class="check-sub">Без гаданий и жёстких ограничений — чёткое понимание следующего шага</div>
-            </div>
-          </div>
-          <div class="lp-success-inline">
-            <span class="lp-success-star">✨</span>
-            <p class="lp-success-text">После теста ты получишь персональный разбор и чёткое понимание, что делать дальше.</p>
-          </div>
+      <div class="check-row">
+        <div class="check-mark">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.7" stroke-linecap="square"/></svg>
+        </div>
+        <div class="check-body">
+          <div class="check-title">5 продуктов, которые тайно убивают талию</div>
+          <div class="check-sub">PDF-гайд от тренеров — бесплатно</div>
+        </div>
+      </div>
+      <div class="check-row">
+        <div class="check-mark">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.7" stroke-linecap="square"/></svg>
+        </div>
+        <div class="check-body">
+          <div class="check-title">Что делать именно в твоём случае</div>
+          <div class="check-sub">Чтобы сдвинуть вес с мёртвой точки</div>
         </div>
       </div>
     </div>
+    <button class="btn-primary" onclick="startQuiz()">
+      Пройти тест
+      <svg viewBox="0 0 20 20" fill="none">
+        <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="lp-avoid">
+    <p class="lp-avoid-text"><strong>Не начинай ещё одну диету,</strong> пока не узнаешь свой тип жиросжигания. Без диагностики любой план — лотерея.</p>
+  </div>
+
+  <div class="lp-success">
+    <span class="lp-success-star">✨</span>
+    <p class="lp-success-text">После теста ты получишь персональный разбор и чёткое понимание, что делать дальше. Без гаданий и жёстких ограничений.</p>
   </div>
 
 </section>
@@ -1073,7 +863,8 @@ body.is-landing .top-bar { display: none; }
     <span class="topic-stage" id="topicStage">Знакомство</span>
   </div>
   <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="progressFill"></div></div>
-  <div class="quiz-wrap">
+  <div class="container">
+    <div class="quiz-wrap">
 
       <!-- name input -->
       <div id="step-name" class="quiz-block">
@@ -1123,6 +914,7 @@ body.is-landing .top-bar { display: none; }
       </div>
 
     </div>
+  </div>
 </section>
 
 <!-- ═══════════════ RESULT ═══════════════ -->
@@ -1130,65 +922,59 @@ body.is-landing .top-bar { display: none; }
   <div class="result-bg">
 
     <div class="result-hero">
-      <div class="result-hero-inner">
-        <div class="result-eyebrow">🔥 Результат готов</div>
-        <h2 class="result-greeting"><span id="resName">Имя</span>, результат готов <span class="fire">🔥</span></h2>
-        <div class="result-type-box"><span class="result-type-label">Твой тип</span></div>
-        <div class="result-type-name" id="resTypeName">—</div>
-        <p class="result-diag" id="resDiag"></p>
-      </div>
+      <div class="result-eyebrow">🔥 Результат готов</div>
+      <h2 class="result-greeting"><span id="resName">Имя</span>, результат готов <span class="fire">🔥</span></h2>
+      <div class="result-type-box"><span class="result-type-label">Твой тип</span></div>
+      <div class="result-type-name" id="resTypeName">—</div>
+      <p class="result-diag" id="resDiag"></p>
     </div>
 
-    <div class="result-card-wrap">
-      <div class="result-card">
-        <h3>🎁 Забери PDF-гайд</h3>
-        <p>«5 продуктов, которые убивают твою талию» — конкретный список и замены, без воды.</p>
-        <a href="#" class="btn-secondary" onclick="event.preventDefault(); alert('Здесь будет ссылка на скачивание PDF');">
-          Скачать PDF
-          <svg viewBox="0 0 16 16" fill="none">
-            <path d="M8 2v9M3 8l5 5 5-5M2 14h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/>
-          </svg>
-        </a>
-      </div>
+    <div class="result-card">
+      <h3>🎁 Забери PDF-гайд</h3>
+      <p>«5 продуктов, которые убивают твою талию» — конкретный список и замены, без воды.</p>
+      <a href="#" class="btn-secondary" onclick="event.preventDefault(); alert('Здесь будет ссылка на скачивание PDF');">
+        Скачать PDF
+        <svg viewBox="0 0 16 16" fill="none">
+          <path d="M8 2v9M3 8l5 5 5-5M2 14h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/>
+        </svg>
+      </a>
     </div>
 
-    <div class="result-bridge-wrap">
-      <div class="result-bridge">
-        <div class="bridge-eyebrow">Что дальше</div>
-        <h2 class="bridge-h2">Знание без системы не работает</h2>
-        <p class="bridge-text">Ты знаешь свой тип. Знаешь, какие продукты мешают талии. Но нужен план, который учтёт <strong>именно твой</strong> тип жиросжигания.</p>
+    <div class="result-bridge">
+      <div class="bridge-eyebrow">Что дальше</div>
+      <h2 class="bridge-h2">Знание без системы не работает</h2>
+      <p class="bridge-text">Ты знаешь свой тип. Знаешь, какие продукты мешают талии. Но нужен план, который учтёт <strong>именно твой</strong> тип жиросжигания.</p>
 
-        <div class="course-features">
-          <div class="course-feat-row"><span class="icon">🔥</span><span>3 класса тренировок — тело не привыкает</span></div>
-          <div class="course-feat-row"><span class="icon">🥗</span><span>Питание без голодовок — без срывов</span></div>
-          <div class="course-feat-row"><span class="icon">🎯</span><span>Чёткий план на 45 дней — не надо думать</span></div>
+      <div class="course-features">
+        <div class="course-feat-row"><span class="icon">🔥</span><span>3 класса тренировок — тело не привыкает</span></div>
+        <div class="course-feat-row"><span class="icon">🥗</span><span>Питание без голодовок — без срывов</span></div>
+        <div class="course-feat-row"><span class="icon">🎯</span><span>Чёткий план на 45 дней — не надо думать</span></div>
+      </div>
+
+      <div class="bridge-personal">
+        <div class="bridge-personal-label">Лично для тебя</div>
+        <div class="bridge-personal-text" id="resPersonal"></div>
+      </div>
+
+      <a href="https://gymteam.ru/l/fatburning" class="btn-primary" onclick="event.preventDefault(); alert('Здесь будет переход на страницу курса');">
+        Перейти на страницу курса
+        <svg viewBox="0 0 20 20" fill="none">
+          <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        </svg>
+      </a>
+
+      <div class="utp-row">
+        <div class="utp-item">
+          <div class="utp-icon-wrap"><span class="utp-icon">🛡️</span></div>
+          <div class="utp-text"><strong>Гарантия 14 дней</strong><span>Не подойдёт — вернём деньги</span></div>
         </div>
-
-        <div class="bridge-personal">
-          <div class="bridge-personal-label">Лично для тебя</div>
-          <div class="bridge-personal-text" id="resPersonal"></div>
+        <div class="utp-item">
+          <div class="utp-icon-wrap"><span class="utp-icon">📱</span></div>
+          <div class="utp-text"><strong>Доступ навсегда</strong><span>В приложении и на сайте</span></div>
         </div>
-
-        <a href="https://gymteam.ru/l/fatburning" class="btn-primary" onclick="event.preventDefault(); alert('Здесь будет переход на страницу курса');">
-          Перейти на страницу курса
-          <svg viewBox="0 0 20 20" fill="none">
-            <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
-          </svg>
-        </a>
-
-        <div class="utp-row">
-          <div class="utp-item">
-            <div class="utp-icon-wrap"><span class="utp-icon">🛡️</span></div>
-            <div class="utp-text"><strong>Гарантия 14 дней</strong><span>Не подойдёт — вернём деньги</span></div>
-          </div>
-          <div class="utp-item">
-            <div class="utp-icon-wrap"><span class="utp-icon">📱</span></div>
-            <div class="utp-text"><strong>Доступ навсегда</strong><span>В приложении и на сайте</span></div>
-          </div>
-          <div class="utp-item">
-            <div class="utp-icon-wrap"><span class="utp-icon">⚡</span></div>
-            <div class="utp-text"><strong>Старт сразу</strong><span>Тренируйся уже сегодня вечером</span></div>
-          </div>
+        <div class="utp-item">
+          <div class="utp-icon-wrap"><span class="utp-icon">⚡</span></div>
+          <div class="utp-text"><strong>Старт сразу</strong><span>Тренируйся уже сегодня вечером</span></div>
         </div>
       </div>
     </div>
@@ -1334,7 +1120,6 @@ function clearState() {
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  document.body.classList.toggle('is-landing', id === 'screen-landing');
   window.scrollTo(0, 0);
 }
 
@@ -1527,7 +1312,6 @@ document.addEventListener('keydown', e => {
 });
 
 loadState();
-document.body.classList.add('is-landing');
 </script>
 
 </body>
