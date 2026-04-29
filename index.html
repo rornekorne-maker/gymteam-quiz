@@ -56,50 +56,93 @@ body {
   .top-bar img { height: 32px; }
   .top-tag { font-size: 11px; }
 
-  /* HERO — full-width black wrapper, inner constrained grid */
+  /* HERO — Concept 1: full-width photo bg with centered content */
   .lp-hero {
     display: block;
     padding: 0;
     max-width: none;
     margin: 0;
+    position: relative;
   }
   .lp-hero-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 720px;
-    align-items: stretch;
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 56px;
+    display: block;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 720px;
+    overflow: hidden;
   }
   .lp-hero-img-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
     height: 100%;
-    min-height: 0;
-    grid-column: 2;
-    grid-row: 1;
     overflow: hidden;
+    z-index: 0;
   }
   .lp-hero-img {
     width: 100%;
     height: 100%;
-    object-position: 50% 25%;
-    filter: brightness(0.78) contrast(1.05);
+    object-fit: cover;
+    object-position: 50% 30%;
+    filter: brightness(0.55) contrast(1.05) saturate(0.85);
   }
   .lp-hero-overlay {
-    background: linear-gradient(90deg, var(--black) 0%, rgba(14,14,16,0.45) 25%, rgba(14,14,16,0) 100%);
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(14,14,16,0.55) 0%, rgba(14,14,16,0.35) 35%, rgba(14,14,16,0.7) 75%, rgba(14,14,16,0.95) 100%),
+      radial-gradient(ellipse at center, rgba(14,14,16,0) 0%, rgba(14,14,16,0.5) 100%);
+    z-index: 1;
   }
   .lp-hero-content {
-    padding: 56px 56px 56px 0;
-    margin: 0;
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+    padding: 56px 56px 72px;
+    max-width: 920px;
+    min-height: 720px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    grid-row: 1;
-    grid-column: 1;
-    z-index: 3;
-    width: 100%;
+    text-align: center;
   }
-  .lp-hero-top { margin-bottom: 32px; }
+  .lp-hero-content .lp-eyebrow {
+    font-size: 12px;
+    padding: 7px 16px;
+    margin-bottom: 28px;
+    background: rgba(238,39,55,0.18);
+    border: 1px solid rgba(238,39,55,0.5);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .lp-hero-top {
+    position: absolute;
+    top: 32px;
+    left: 56px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .lp-hero-logo { height: 32px; display: block; }
+  .lp-hero-top .lp-eyebrow { margin: 0; }
+  .lp-h1 { font-size: 72px; line-height: 0.95; margin-bottom: 24px; max-width: 880px; }
+  .lp-hero-sub { font-size: 19px; margin-bottom: 36px; max-width: 600px; line-height: 1.5; color: rgba(255,255,255,0.85); }
+  .lp-hero-btn { max-width: 320px; }
+  .lp-hero-bullets {
+    flex-direction: row;
+    gap: 32px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .lp-hero-bullets li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+  }
   .lp-hero-logo { height: 32px; }
   .lp-h1 { font-size: 64px; line-height: 0.96; margin-bottom: 28px; }
   .lp-hero-sub { font-size: 19px; margin-bottom: 32px; max-width: 540px; }
@@ -249,9 +292,9 @@ body {
 }
 
 @media (min-width: 1100px) {
-  .lp-hero-inner { grid-template-columns: 1.05fr 1fr; padding: 0 64px; }
-  .lp-hero-content { padding: 80px 56px 80px 0; }
-  .lp-h1 { font-size: 84px; line-height: 0.95; }
+  .lp-hero-inner { min-height: 780px; }
+  .lp-hero-content { min-height: 780px; max-width: 980px; padding: 64px 56px 88px; }
+  .lp-h1 { font-size: 88px; line-height: 0.94; }
   .lp-hero-sub { font-size: 20px; }
   .lp-h2 { font-size: 72px; }
   .quiz-question { font-size: 44px; }
@@ -263,9 +306,10 @@ body {
 }
 
 @media (min-width: 1400px) {
-  .lp-hero-inner { grid-template-columns: 1.1fr 1fr; grid-template-rows: 760px; padding: 0 80px; }
-  .lp-hero-content { padding: 88px 72px 88px 0; }
-  .lp-h1 { font-size: 96px; }
+  .lp-hero-inner { min-height: 840px; }
+  .lp-hero-content { min-height: 840px; max-width: 1080px; padding: 72px 56px 96px; }
+  .lp-hero-top { left: 80px; top: 40px; }
+  .lp-h1 { font-size: 104px; }
   .lp-h2 { font-size: 80px; }
   .result-type-name { font-size: 120px; }
   .bridge-h2 { font-size: 68px; }
@@ -291,9 +335,8 @@ body {
   letter-spacing: 0.1em;
 }
 
-/* on landing screen — header is shown but compact (no top-tag) */
-body.is-landing .top-tag { display: none; }
-body.is-landing .top-bar { justify-content: flex-start; }
+/* on landing screen — header is hidden, logo embedded into hero */
+body.is-landing .top-bar { display: none; }
 
 /* embedded logo on hero */
 .lp-hero-top {
@@ -984,9 +1027,12 @@ body.is-landing .top-bar { justify-content: flex-start; }
         <div class="lp-hero-overlay"></div>
       </div>
       <div class="lp-hero-content">
-        <span class="lp-eyebrow">Бесплатная диагностика</span>
-        <h1 class="lp-h1">Узнай, почему твой жир <span class="accent">не уходит</span>, даже когда ты всё делаешь правильно</h1>
-        <p class="lp-hero-sub">2 минуты на тест — и ты получишь свой тип жиросжигания, PDF-гайд и план, что делать дальше. Бесплатно.</p>
+        <div class="lp-hero-top">
+          <img src="logo.svg" alt="GymTeam" class="lp-hero-logo">
+        </div>
+        <span class="lp-eyebrow">Бесплатная диагностика · 2 минуты</span>
+        <h1 class="lp-h1">Узнай свой <span class="accent">тип жиросжигания</span></h1>
+        <p class="lp-hero-sub">7 вопросов — и ты получишь персональный разбор, PDF-гайд и план, что делать дальше. Бесплатно.</p>
         <button class="btn-primary lp-hero-btn" onclick="startQuiz()">
           Пройти тест
           <svg viewBox="0 0 20 20" fill="none">
