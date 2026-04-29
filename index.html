@@ -59,8 +59,8 @@ body {
   /* HERO — split layout */
   .lp-hero {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    grid-template-rows: 620px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 640px;
     align-items: stretch;
   }
   .lp-hero-img-wrap {
@@ -77,10 +77,10 @@ body {
     filter: brightness(0.78) contrast(1.05);
   }
   .lp-hero-overlay {
-    background: linear-gradient(90deg, var(--black) 0%, rgba(14,14,16,0.55) 30%, rgba(14,14,16,0.1) 100%);
+    background: linear-gradient(90deg, var(--black) 0%, rgba(14,14,16,0.45) 25%, rgba(14,14,16,0) 100%);
   }
   .lp-hero-content {
-    padding: 72px 56px;
+    padding: 56px 64px;
     margin-top: 0;
     display: flex;
     flex-direction: column;
@@ -88,13 +88,14 @@ body {
     grid-row: 1;
     grid-column: 1;
     z-index: 3;
-    max-width: 640px;
     width: 100%;
-    margin-left: auto;
+    max-width: none;
   }
+  .lp-hero-top { margin-bottom: 32px; }
+  .lp-hero-logo { height: 32px; }
   .lp-h1 { font-size: 52px; line-height: 0.96; margin-bottom: 22px; }
-  .lp-hero-sub { font-size: 17px; margin-bottom: 28px; max-width: 480px; }
-  .lp-hero-btn { max-width: 340px; }
+  .lp-hero-sub { font-size: 17px; margin-bottom: 28px; max-width: 520px; }
+  .lp-hero-btn { max-width: 360px; }
   .lp-hero-bullets {
     flex-direction: row;
     gap: 24px;
@@ -187,22 +188,26 @@ body {
   .quiz-topic-banner { padding: 14px 40px; font-size: 12px; }
 
   /* RESULT */
-  .result-hero { padding: 72px 0; }
-  .result-hero > * {
+  .result-hero {
+    padding: 72px 40px;
+  }
+  .result-hero-inner {
     max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 40px;
-    padding-right: 40px;
+    margin: 0 auto;
   }
   .result-eyebrow { font-size: 11px; }
   .result-greeting { font-size: 32px; max-width: 720px; }
   .result-type-name { font-size: 64px; }
   .result-diag { font-size: 17px; max-width: 720px; line-height: 1.65; }
 
-  .result-card {
+  .result-card-wrap,
+  .result-bridge-wrap {
     max-width: 1100px;
-    margin: -1px auto 0;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .result-card {
+    margin: -1px 0 0;
     padding: 40px;
   }
   .result-card h3 { font-size: 26px; margin-bottom: 12px; }
@@ -210,9 +215,8 @@ body {
   .result-card .btn-secondary { max-width: 320px; }
 
   .result-bridge {
-    max-width: 1100px;
-    margin: 16px auto 0;
-    padding: 56px 40px;
+    margin: 16px 0 0;
+    padding: 56px;
   }
   .bridge-eyebrow { font-size: 11px; margin-bottom: 14px; }
   .bridge-h2 { font-size: 38px; margin-bottom: 18px; max-width: 720px; }
@@ -237,13 +241,18 @@ body {
 }
 
 @media (min-width: 1100px) {
-  .lp-hero-content { padding: 88px 72px; }
+  .lp-hero-content { padding: 80px 88px; }
   .lp-h1 { font-size: 64px; }
   .lp-hero-sub { font-size: 18px; }
   .lp-h2 { font-size: 52px; }
-  .quiz-question { font-size: 40px; }
+  .quiz-question { font-size: 36px; }
   .result-type-name { font-size: 76px; }
   .bridge-h2 { font-size: 44px; }
+}
+
+@media (min-width: 1400px) {
+  .lp-hero { grid-template-rows: 680px; }
+  .lp-hero-content { padding: 88px 120px; }
 }
 
 /* ─── HEADER ─── */
@@ -265,6 +274,20 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+
+/* hide top-bar on landing — logo is embedded into hero */
+body.is-landing .top-bar { display: none; }
+
+/* embedded logo on hero */
+.lp-hero-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.lp-hero-logo { height: 28px; display: block; flex-shrink: 0; }
+.lp-hero-top .lp-eyebrow { margin-bottom: 0; }
 
 /* ─── LANDING — MOBILE-FIRST BASE ─── */
 
@@ -714,9 +737,12 @@ body {
 }
 .result-diag strong { color: var(--white); font-weight: 700; }
 
+.result-card-wrap,
+.result-bridge-wrap {
+  padding: 0 20px;
+}
 .result-card {
   background: var(--white);
-  margin: 0 20px;
   padding: 24px 20px;
   border-top: 4px solid var(--red);
   margin-top: -1px;
@@ -762,7 +788,7 @@ body {
 
 .result-bridge {
   background: var(--white);
-  margin: 16px 20px 0;
+  margin-top: 16px;
   padding: 24px 20px;
   border-top: 1px solid var(--gray-100);
 }
@@ -940,7 +966,10 @@ body {
       <div class="lp-hero-overlay"></div>
     </div>
     <div class="lp-hero-content">
-      <span class="lp-eyebrow">Бесплатная диагностика</span>
+      <div class="lp-hero-top">
+        <img src="logo.svg" alt="GymTeam" class="lp-hero-logo">
+        <span class="lp-eyebrow">Бесплатная диагностика</span>
+      </div>
       <h1 class="lp-h1">Узнай, почему твой жир <span class="accent">не уходит</span>, даже когда ты всё делаешь правильно</h1>
       <p class="lp-hero-sub">2 минуты на тест — и ты получишь свой тип жиросжигания, PDF-гайд и план, что делать дальше. Бесплатно.</p>
       <button class="btn-primary lp-hero-btn" onclick="startQuiz()">
@@ -1100,59 +1129,65 @@ body {
   <div class="result-bg">
 
     <div class="result-hero">
-      <div class="result-eyebrow">🔥 Результат готов</div>
-      <h2 class="result-greeting"><span id="resName">Имя</span>, результат готов <span class="fire">🔥</span></h2>
-      <div class="result-type-box"><span class="result-type-label">Твой тип</span></div>
-      <div class="result-type-name" id="resTypeName">—</div>
-      <p class="result-diag" id="resDiag"></p>
+      <div class="result-hero-inner">
+        <div class="result-eyebrow">🔥 Результат готов</div>
+        <h2 class="result-greeting"><span id="resName">Имя</span>, результат готов <span class="fire">🔥</span></h2>
+        <div class="result-type-box"><span class="result-type-label">Твой тип</span></div>
+        <div class="result-type-name" id="resTypeName">—</div>
+        <p class="result-diag" id="resDiag"></p>
+      </div>
     </div>
 
-    <div class="result-card">
-      <h3>🎁 Забери PDF-гайд</h3>
-      <p>«5 продуктов, которые убивают твою талию» — конкретный список и замены, без воды.</p>
-      <a href="#" class="btn-secondary" onclick="event.preventDefault(); alert('Здесь будет ссылка на скачивание PDF');">
-        Скачать PDF
-        <svg viewBox="0 0 16 16" fill="none">
-          <path d="M8 2v9M3 8l5 5 5-5M2 14h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/>
-        </svg>
-      </a>
+    <div class="result-card-wrap">
+      <div class="result-card">
+        <h3>🎁 Забери PDF-гайд</h3>
+        <p>«5 продуктов, которые убивают твою талию» — конкретный список и замены, без воды.</p>
+        <a href="#" class="btn-secondary" onclick="event.preventDefault(); alert('Здесь будет ссылка на скачивание PDF');">
+          Скачать PDF
+          <svg viewBox="0 0 16 16" fill="none">
+            <path d="M8 2v9M3 8l5 5 5-5M2 14h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/>
+          </svg>
+        </a>
+      </div>
     </div>
 
-    <div class="result-bridge">
-      <div class="bridge-eyebrow">Что дальше</div>
-      <h2 class="bridge-h2">Знание без системы не работает</h2>
-      <p class="bridge-text">Ты знаешь свой тип. Знаешь, какие продукты мешают талии. Но нужен план, который учтёт <strong>именно твой</strong> тип жиросжигания.</p>
+    <div class="result-bridge-wrap">
+      <div class="result-bridge">
+        <div class="bridge-eyebrow">Что дальше</div>
+        <h2 class="bridge-h2">Знание без системы не работает</h2>
+        <p class="bridge-text">Ты знаешь свой тип. Знаешь, какие продукты мешают талии. Но нужен план, который учтёт <strong>именно твой</strong> тип жиросжигания.</p>
 
-      <div class="course-features">
-        <div class="course-feat-row"><span class="icon">🔥</span><span>3 класса тренировок — тело не привыкает</span></div>
-        <div class="course-feat-row"><span class="icon">🥗</span><span>Питание без голодовок — без срывов</span></div>
-        <div class="course-feat-row"><span class="icon">🎯</span><span>Чёткий план на 45 дней — не надо думать</span></div>
-      </div>
-
-      <div class="bridge-personal">
-        <div class="bridge-personal-label">Лично для тебя</div>
-        <div class="bridge-personal-text" id="resPersonal"></div>
-      </div>
-
-      <a href="https://gymteam.ru/l/fatburning" class="btn-primary" onclick="event.preventDefault(); alert('Здесь будет переход на страницу курса');">
-        Перейти на страницу курса
-        <svg viewBox="0 0 20 20" fill="none">
-          <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
-        </svg>
-      </a>
-
-      <div class="utp-row">
-        <div class="utp-item">
-          <div class="utp-icon-wrap"><span class="utp-icon">🛡️</span></div>
-          <div class="utp-text"><strong>Гарантия 14 дней</strong><span>Не подойдёт — вернём деньги</span></div>
+        <div class="course-features">
+          <div class="course-feat-row"><span class="icon">🔥</span><span>3 класса тренировок — тело не привыкает</span></div>
+          <div class="course-feat-row"><span class="icon">🥗</span><span>Питание без голодовок — без срывов</span></div>
+          <div class="course-feat-row"><span class="icon">🎯</span><span>Чёткий план на 45 дней — не надо думать</span></div>
         </div>
-        <div class="utp-item">
-          <div class="utp-icon-wrap"><span class="utp-icon">📱</span></div>
-          <div class="utp-text"><strong>Доступ навсегда</strong><span>В приложении и на сайте</span></div>
+
+        <div class="bridge-personal">
+          <div class="bridge-personal-label">Лично для тебя</div>
+          <div class="bridge-personal-text" id="resPersonal"></div>
         </div>
-        <div class="utp-item">
-          <div class="utp-icon-wrap"><span class="utp-icon">⚡</span></div>
-          <div class="utp-text"><strong>Старт сразу</strong><span>Тренируйся уже сегодня вечером</span></div>
+
+        <a href="https://gymteam.ru/l/fatburning" class="btn-primary" onclick="event.preventDefault(); alert('Здесь будет переход на страницу курса');">
+          Перейти на страницу курса
+          <svg viewBox="0 0 20 20" fill="none">
+            <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+          </svg>
+        </a>
+
+        <div class="utp-row">
+          <div class="utp-item">
+            <div class="utp-icon-wrap"><span class="utp-icon">🛡️</span></div>
+            <div class="utp-text"><strong>Гарантия 14 дней</strong><span>Не подойдёт — вернём деньги</span></div>
+          </div>
+          <div class="utp-item">
+            <div class="utp-icon-wrap"><span class="utp-icon">📱</span></div>
+            <div class="utp-text"><strong>Доступ навсегда</strong><span>В приложении и на сайте</span></div>
+          </div>
+          <div class="utp-item">
+            <div class="utp-icon-wrap"><span class="utp-icon">⚡</span></div>
+            <div class="utp-text"><strong>Старт сразу</strong><span>Тренируйся уже сегодня вечером</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1298,6 +1333,7 @@ function clearState() {
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  document.body.classList.toggle('is-landing', id === 'screen-landing');
   window.scrollTo(0, 0);
 }
 
@@ -1490,6 +1526,7 @@ document.addEventListener('keydown', e => {
 });
 
 loadState();
+document.body.classList.add('is-landing');
 </script>
 
 </body>
