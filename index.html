@@ -56,22 +56,25 @@ body {
   .top-bar img { height: 32px; }
   .top-tag { font-size: 11px; }
 
-  /* HERO — Concept 1: full-width photo bg with centered content */
+  /* HERO — Concept 2: 2-column with text + 4 types cards */
   .lp-hero {
     display: block;
     padding: 0;
     max-width: none;
     margin: 0;
     position: relative;
+    background: var(--black);
   }
   .lp-hero-inner {
-    display: block;
-    max-width: none;
-    margin: 0;
-    padding: 0;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: stretch;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 56px;
+    min-height: 640px;
     position: relative;
-    min-height: 720px;
-    overflow: hidden;
+    z-index: 2;
   }
   .lp-hero-img-wrap {
     position: absolute;
@@ -85,64 +88,85 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 30%;
-    filter: brightness(0.55) contrast(1.05) saturate(0.85);
+    object-position: 75% 30%;
+    filter: brightness(0.4) contrast(1.05) saturate(0.7);
   }
   .lp-hero-overlay {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(14,14,16,0.55) 0%, rgba(14,14,16,0.35) 35%, rgba(14,14,16,0.7) 75%, rgba(14,14,16,0.95) 100%),
-      radial-gradient(ellipse at center, rgba(14,14,16,0) 0%, rgba(14,14,16,0.5) 100%);
+      linear-gradient(90deg, rgba(14,14,16,0.95) 0%, rgba(14,14,16,0.85) 35%, rgba(14,14,16,0.65) 100%);
     z-index: 1;
   }
   .lp-hero-content {
     position: relative;
-    z-index: 2;
-    margin: 0 auto;
-    padding: 56px 56px 72px;
-    max-width: 920px;
-    min-height: 720px;
+    z-index: 3;
+    padding: 56px 56px 56px 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-  }
-  .lp-hero-content .lp-eyebrow {
-    font-size: 12px;
-    padding: 7px 16px;
-    margin-bottom: 28px;
-    background: rgba(238,39,55,0.18);
-    border: 1px solid rgba(238,39,55,0.5);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    grid-row: 1;
+    grid-column: 1;
+    width: 100%;
+    text-align: left;
+    align-items: flex-start;
   }
   .lp-hero-top {
-    position: absolute;
-    top: 32px;
-    left: 56px;
-    margin: 0;
+    margin-bottom: 36px;
     display: flex;
     align-items: center;
     gap: 18px;
+    position: static;
   }
   .lp-hero-logo { height: 32px; display: block; }
-  .lp-hero-top .lp-eyebrow { margin: 0; }
-  .lp-h1 { font-size: 72px; line-height: 0.95; margin-bottom: 24px; max-width: 880px; }
-  .lp-hero-sub { font-size: 19px; margin-bottom: 36px; max-width: 600px; line-height: 1.5; color: rgba(255,255,255,0.85); }
+  .lp-hero-content .lp-eyebrow {
+    margin: 0;
+    background: rgba(238,39,55,0.15);
+    border: 1px solid rgba(238,39,55,0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .lp-h1 { font-size: 64px; line-height: 0.95; margin-bottom: 22px; max-width: none; }
+  .lp-hero-sub { font-size: 18px; margin-bottom: 32px; max-width: 520px; line-height: 1.55; color: rgba(255,255,255,0.78); }
   .lp-hero-btn { max-width: 320px; }
   .lp-hero-bullets {
     flex-direction: row;
-    gap: 32px;
-    margin-top: 28px;
+    gap: 24px;
+    margin-top: 24px;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
   }
-  .lp-hero-bullets li {
-    font-size: 13px;
-    color: rgba(255,255,255,0.6);
+  .lp-hero-bullets li { font-size: 13px; color: rgba(255,255,255,0.6); }
+
+  /* types grid — desktop: 2x2 in right column */
+  .lp-types-grid {
+    grid-row: 1;
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+    padding: 56px 0 56px 32px;
+    align-content: center;
+    z-index: 3;
   }
+  .type-card {
+    padding: 22px 20px;
+    gap: 8px;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  }
+  .type-card:hover {
+    border-color: rgba(238,39,55,0.45);
+    background: rgba(238,39,55,0.08);
+    transform: translateY(-2px);
+  }
+  .type-card:first-child:hover {
+    background: rgba(238,39,55,0.18);
+  }
+  .type-card-label { font-size: 11px; }
+  .type-card-name { font-size: 19px; }
+  .type-card-desc { display: block; }
   .lp-hero-logo { height: 32px; }
   .lp-h1 { font-size: 64px; line-height: 0.96; margin-bottom: 28px; }
   .lp-hero-sub { font-size: 19px; margin-bottom: 32px; max-width: 540px; }
@@ -292,9 +316,13 @@ body {
 }
 
 @media (min-width: 1100px) {
-  .lp-hero-inner { min-height: 780px; }
-  .lp-hero-content { min-height: 780px; max-width: 980px; padding: 64px 56px 88px; }
-  .lp-h1 { font-size: 88px; line-height: 0.94; }
+  .lp-hero-inner { min-height: 720px; padding: 0 64px; grid-template-columns: 1.05fr 1fr; }
+  .lp-hero-content { padding: 80px 56px 80px 0; }
+  .lp-types-grid { padding: 80px 0 80px 40px; gap: 16px; }
+  .type-card { padding: 26px 24px; }
+  .type-card-name { font-size: 22px; }
+  .type-card-desc { font-size: 12.5px; }
+  .lp-h1 { font-size: 76px; line-height: 0.95; }
   .lp-hero-sub { font-size: 20px; }
   .lp-h2 { font-size: 72px; }
   .quiz-question { font-size: 44px; }
@@ -306,10 +334,12 @@ body {
 }
 
 @media (min-width: 1400px) {
-  .lp-hero-inner { min-height: 840px; }
-  .lp-hero-content { min-height: 840px; max-width: 1080px; padding: 72px 56px 96px; }
-  .lp-hero-top { left: 80px; top: 40px; }
-  .lp-h1 { font-size: 104px; }
+  .lp-hero-inner { min-height: 760px; padding: 0 80px; grid-template-columns: 1.1fr 1fr; }
+  .lp-hero-content { padding: 88px 72px 88px 0; }
+  .lp-types-grid { padding: 88px 0 88px 56px; gap: 18px; }
+  .type-card { padding: 30px 26px; }
+  .type-card-name { font-size: 24px; }
+  .lp-h1 { font-size: 88px; }
   .lp-h2 { font-size: 80px; }
   .result-type-name { font-size: 120px; }
   .bridge-h2 { font-size: 68px; }
@@ -427,6 +457,55 @@ body.is-landing .top-bar { display: none; }
   color: rgba(255,255,255,0.65);
 }
 .lp-hero-bullets li span { font-size: 16px; }
+
+/* 4 types grid — Concept 2 */
+.lp-types-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0 20px 32px;
+}
+.type-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.type-card:first-child {
+  background: rgba(238,39,55,0.12);
+  border-color: rgba(238,39,55,0.45);
+}
+.type-card-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.type-card:first-child .type-card-label { color: var(--red); }
+.type-card-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+}
+.type-card-desc {
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.4;
+  font-weight: 500;
+  display: none;
+}
 
 .btn-primary {
   display: flex;
@@ -1019,7 +1098,7 @@ body.is-landing .top-bar { display: none; }
 <!-- ═══════════════ LANDING ═══════════════ -->
 <section class="screen active" id="screen-landing">
 
-  <!-- HERO -->
+  <!-- HERO — Concept 2: text + 4 types grid -->
   <div class="lp-hero">
     <div class="lp-hero-inner">
       <div class="lp-hero-img-wrap">
@@ -1029,10 +1108,10 @@ body.is-landing .top-bar { display: none; }
       <div class="lp-hero-content">
         <div class="lp-hero-top">
           <img src="logo.svg" alt="GymTeam" class="lp-hero-logo">
+          <span class="lp-eyebrow">Бесплатная диагностика</span>
         </div>
-        <span class="lp-eyebrow">Бесплатная диагностика · 2 минуты</span>
-        <h1 class="lp-h1">Узнай свой <span class="accent">тип жиросжигания</span></h1>
-        <p class="lp-hero-sub">7 вопросов — и ты получишь персональный разбор, PDF-гайд и план, что делать дальше. Бесплатно.</p>
+        <h1 class="lp-h1">К какому из <span class="accent">4 типов</span> ты относишься?</h1>
+        <p class="lp-hero-sub">7 вопросов — и ты узнаешь, почему жир не уходит именно у тебя. Получишь персональный разбор и PDF-гайд.</p>
         <button class="btn-primary lp-hero-btn" onclick="startQuiz()">
           Пройти тест
           <svg viewBox="0 0 20 20" fill="none">
@@ -1044,6 +1123,28 @@ body.is-landing .top-bar { display: none; }
           <li><span>🔒</span> Без оплаты и спама</li>
           <li><span>🎁</span> + PDF в подарок</li>
         </ul>
+      </div>
+      <div class="lp-types-grid">
+        <div class="type-card">
+          <div class="type-card-label">Тип А</div>
+          <div class="type-card-name">Голодная диета</div>
+          <div class="type-card-desc">Ешь мало — а вес стоит. Метаболизм замедлен.</div>
+        </div>
+        <div class="type-card">
+          <div class="type-card-label">Тип Б</div>
+          <div class="type-card-name">Кардио-наркоманка</div>
+          <div class="type-card-desc">Много кардио, мало мышц. Жиру нечем сгорать.</div>
+        </div>
+        <div class="type-card">
+          <div class="type-card-label">Тип В</div>
+          <div class="type-card-name">Гормональные качели</div>
+          <div class="type-card-desc">Стресс + кортизол держат жир на животе.</div>
+        </div>
+        <div class="type-card">
+          <div class="type-card-label">Тип Г</div>
+          <div class="type-card-name">Скрытый сахар</div>
+          <div class="type-card-desc">«Полезные» перекусы тормозят прогресс.</div>
+        </div>
       </div>
     </div>
   </div>
