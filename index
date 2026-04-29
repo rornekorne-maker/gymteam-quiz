@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Жиросжигающий — узнай свой тип</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0E0E10;
+  --black-2: #1A1A1F;
+  --red: #EE2737;
+  --red-dark: #C81E2C;
+  --red-soft: #FFF0F1;
+  --pink: #EE4777;
+  --blue: #3CB4E5;
+  --gray-50: #F5F5F7;
+  --gray-100: #ECECEE;
+  --gray-200: #D8D8DC;
+  --gray-400: #8E8E93;
+  --gray-600: #4A4A4F;
+  --white: #FFFFFF;
+  --green: #1B7A3E;
+  --green-bg: #E6F4EA;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.h-display {
+  font-family: 'Oswald', 'Manrope', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 0.95;
+}
+
+.screen { display: none; }
+.screen.active { display: block; animation: fadeIn 0.3s ease both; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.container { max-width: 420px; margin: 0 auto; padding: 0 20px; }
+
+/* ─── HEADER ─── */
+.top-bar {
+  background: var(--black);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.top-bar img { height: 26px; display: block; }
+.top-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ─── LANDING (screen-0) ─── */
+.lp-hero {
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+.lp-hero-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  filter: brightness(0.55) contrast(1.1) saturate(0.85);
+}
+.lp-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14,14,16,0.2) 0%, rgba(14,14,16,0.7) 70%, var(--black) 100%);
+}
+.lp-hero-content {
+  padding: 24px 20px 28px;
+  position: relative;
+  z-index: 2;
+  margin-top: -120px;
+}
+.lp-eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--red);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  padding: 5px 11px;
+  background: rgba(238,39,55,0.12);
+  border: 1px solid rgba(238,39,55,0.4);
+}
+.lp-h1 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  text-transform: uppercase;
+  line-height: 0.98;
+  color: var(--white);
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+}
+.lp-h1 .accent { color: var(--red); }
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: var(--red);
+  color: var(--white);
+  font-family: 'Oswald', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 18px 24px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-primary:hover { background: var(--red-dark); }
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:disabled { background: var(--gray-200); color: var(--gray-400); cursor: not-allowed; }
+.btn-primary svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+/* problems */
+.lp-section { padding: 28px 20px; }
+.lp-problems {
+  background: var(--red-soft);
+  border-top: 4px solid var(--red);
+}
+.lp-section-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--red);
+  margin-bottom: 14px;
+}
+.lp-h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--black);
+  margin-bottom: 22px;
+}
+.lp-h2 .accent { color: var(--red); }
+
+.prob-list { display: flex; flex-direction: column; gap: 10px; }
+.prob-card {
+  background: var(--white);
+  padding: 14px 14px 14px 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-left: 3px solid var(--red);
+}
+.prob-icon {
+  width: 38px; height: 38px;
+  background: var(--red-soft);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.prob-text { font-size: 13.5px; font-weight: 600; color: #2A1015; line-height: 1.35; }
+
+/* guide */
+.lp-guide { background: var(--gray-50); }
+.lp-guide-text { font-size: 15px; line-height: 1.65; color: var(--black); }
+.lp-guide-text strong { font-weight: 800; }
+
+/* plan */
+.lp-plan { background: var(--white); padding-bottom: 24px; }
+.lp-plan-intro { font-size: 14px; color: var(--gray-600); margin-bottom: 18px; font-weight: 500; }
+.check-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 26px; }
+.check-row { display: flex; align-items: flex-start; gap: 12px; }
+.check-mark {
+  width: 24px; height: 24px;
+  background: var(--black);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.check-mark svg { width: 12px; height: 12px; }
+.check-body { flex: 1; }
+.check-title { font-size: 14px; font-weight: 700; color: var(--black); line-height: 1.35; margin-bottom: 2px; }
+.check-sub { font-size: 12.5px; color: var(--gray-600); font-weight: 500; line-height: 1.4; }
+
+/* avoid */
+.lp-avoid {
+  padding: 16px 20px;
+  background: var(--white);
+  text-align: center;
+  border-top: 1px solid var(--gray-100);
+}
+.lp-avoid-text { font-size: 12px; color: var(--gray-600); line-height: 1.55; }
+.lp-avoid-text strong { color: var(--red); font-weight: 800; }
+
+/* success */
+.lp-success {
+  margin: 0 20px 24px;
+  background: var(--green-bg);
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-left: 3px solid var(--green);
+}
+.lp-success-star { font-size: 18px; line-height: 1; flex-shrink: 0; }
+.lp-success-text { font-size: 12.5px; font-weight: 600; color: #0F3D1F; line-height: 1.5; }
+
+/* ─── QUIZ ─── */
+.quiz-bg {
+  background: var(--white);
+  min-height: 100vh;
+}
+.quiz-progress-bar {
+  background: var(--gray-100);
+  height: 4px;
+  position: sticky;
+  top: 54px;
+  z-index: 99;
+}
+.quiz-progress-fill {
+  height: 100%;
+  background: var(--red);
+  width: 0;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quiz-wrap { padding: 28px 20px 36px; }
+.quiz-step {
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.quiz-step::before {
+  content: '';
+  width: 18px; height: 1.5px;
+  background: var(--red);
+  display: inline-block;
+}
+.quiz-question {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--black);
+  margin-bottom: 24px;
+  letter-spacing: -0.005em;
+}
+.quiz-name { color: var(--red); }
+
+.field-wrap { margin-bottom: 22px; }
+.field-input {
+  width: 100%;
+  padding: 16px 18px;
+  border: 2px solid var(--gray-200);
+  background: var(--white);
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--black);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.field-input:focus { border-color: var(--black); }
+.field-input::placeholder { color: var(--gray-400); font-weight: 500; }
+.field-error {
+  font-size: 12px;
+  color: var(--red);
+  margin-top: 8px;
+  font-weight: 600;
+  display: none;
+}
+.field-error.show { display: block; }
+.field-hint {
+  font-size: 11.5px;
+  color: var(--gray-400);
+  margin-top: 10px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.option-card {
+  background: var(--white);
+  border: 2px solid var(--gray-200);
+  padding: 15px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: border-color 0.15s, background 0.15s, transform 0.12s;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+}
+.option-card:hover { border-color: var(--black); }
+.option-card:active { transform: scale(0.99); }
+.option-card.selected {
+  border-color: var(--red);
+  background: var(--red-soft);
+}
+.option-radio {
+  width: 22px; height: 22px;
+  border: 2px solid var(--gray-200);
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.15s, background 0.15s;
+}
+.option-card.selected .option-radio {
+  border-color: var(--red);
+  background: var(--red);
+}
+.option-card.selected .option-radio::after {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--white);
+  border-radius: 50%;
+}
+.option-text {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.35;
+}
+
+/* ─── RESULT ─── */
+.result-bg { background: var(--gray-50); padding-bottom: 48px; }
+.result-hero {
+  background: var(--black);
+  color: var(--white);
+  padding: 36px 20px 32px;
+}
+.result-eyebrow {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.result-greeting {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  line-height: 1.05;
+}
+.result-greeting .fire { color: var(--red); }
+.result-type-box {
+  background: var(--red);
+  padding: 4px 12px;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+.result-type-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.result-type-name {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 18px;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+.result-diag {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+.result-diag strong { color: var(--white); font-weight: 700; }
+
+.result-card {
+  background: var(--white);
+  margin: 0 20px;
+  padding: 24px 20px;
+  border-top: 4px solid var(--red);
+  margin-top: -1px;
+}
+.result-card h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--black);
+  line-height: 1.1;
+}
+.result-card p {
+  font-size: 14px;
+  color: var(--gray-600);
+  line-height: 1.55;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 16px 22px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-secondary:hover { background: var(--gray-600); }
+.btn-secondary svg { width: 16px; height: 16px; }
+
+.result-bridge {
+  background: var(--white);
+  margin: 16px 20px 0;
+  padding: 24px 20px;
+  border-top: 1px solid var(--gray-100);
+}
+.bridge-eyebrow {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--red);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.bridge-h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--black);
+  margin-bottom: 14px;
+}
+.bridge-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--gray-600);
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.course-features {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 16px;
+  background: var(--gray-50);
+}
+.course-feat-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.4;
+}
+.course-feat-row .icon { font-size: 16px; flex-shrink: 0; line-height: 1.2; }
+
+.bridge-personal {
+  background: var(--red-soft);
+  border-left: 3px solid var(--red);
+  padding: 14px 16px;
+  margin-bottom: 22px;
+}
+.bridge-personal-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+}
+.bridge-personal-text {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #2A1015;
+  font-weight: 600;
+}
+
+.proof-strip {
+  background: var(--black);
+  color: var(--white);
+  padding: 18px 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+.proof-num {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.02em;
+}
+.proof-txt {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* footer */
+.foot {
+  background: var(--black);
+  padding: 18px 20px;
+  text-align: center;
+}
+.foot img { height: 22px; opacity: 0.6; margin-bottom: 8px; }
+.foot-text {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.6;
+}
+.foot-text a { color: var(--red); text-decoration: none; }
+
+/* utility */
+.spacer-12 { height: 12px; }
+
+@media (max-width: 380px) {
+  .lp-h1 { font-size: 28px; }
+  .quiz-question { font-size: 23px; }
+  .result-type-name { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<header class="top-bar">
+  <img src="logo.svg" alt="GymTeam">
+  <div class="top-tag" id="topTag">Бесплатный тест</div>
+</header>
+
+<!-- ═══════════════ LANDING ═══════════════ -->
+<section class="screen active" id="screen-landing">
+
+  <div class="lp-hero">
+    <img src="hero.png" alt="Женщина дома, уставший взгляд" class="lp-hero-img">
+    <div class="lp-hero-overlay"></div>
+    <div class="lp-hero-content">
+      <span class="lp-eyebrow">Бесплатная диагностика</span>
+      <h1 class="lp-h1">Узнай, почему твой жир <span class="accent">не уходит</span>, даже когда ты всё делаешь правильно</h1>
+      <button class="btn-primary" onclick="startQuiz()">
+        Пройти тест
+        <svg viewBox="0 0 20 20" fill="none">
+          <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="lp-section lp-problems">
+    <div class="lp-section-label">Узнаёшь себя?</div>
+    <h2 class="lp-h2">Ты <span class="accent">не одна</span>, кто застрял</h2>
+    <div class="prob-list">
+      <div class="prob-card">
+        <div class="prob-icon">📉</div>
+        <div class="prob-text">Вес стоит неделями — даже при правильном питании</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">😞</div>
+        <div class="prob-text">«Почему у других получается, а у меня нет?»</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-icon">🍕</div>
+        <div class="prob-text">Вечерние срывы и чувство вины после</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lp-section lp-guide">
+    <div class="lp-section-label" style="color: var(--gray-600);">Ты не одна</div>
+    <p class="lp-guide-text"><strong>Тебя понимают.</strong> Этот тест составили тренеры, которые 15 лет ищут причину, а не вешают ярлык «ленивая».</p>
+  </div>
+
+  <div class="lp-section lp-plan">
+    <div class="lp-section-label" style="color: var(--gray-600);">Что получишь</div>
+    <h2 class="lp-h2">2 минуты — <span class="accent">и всё ясно</span></h2>
+    <p class="lp-plan-intro">Пройди короткий тест и узнай:</p>
+    <div class="check-list">
+      <div class="check-row">
+        <div class="check-mark">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.7" stroke-linecap="square"/></svg>
+        </div>
+        <div class="check-body">
+          <div class="check-title">Какой у тебя тип жиросжигания</div>
+          <div class="check-sub">И почему прошлые методы не работали</div>
+        </div>
+      </div>
+      <div class="check-row">
+        <div class="check-mark">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.7" stroke-linecap="square"/></svg>
+        </div>
+        <div class="check-body">
+          <div class="check-title">5 продуктов, которые тайно убивают талию</div>
+          <div class="check-sub">PDF-гайд от тренеров — бесплатно</div>
+        </div>
+      </div>
+      <div class="check-row">
+        <div class="check-mark">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="#fff" stroke-width="1.7" stroke-linecap="square"/></svg>
+        </div>
+        <div class="check-body">
+          <div class="check-title">Что делать именно в твоём случае</div>
+          <div class="check-sub">Чтобы сдвинуть вес с мёртвой точки</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="startQuiz()">
+      Пройти тест
+      <svg viewBox="0 0 20 20" fill="none">
+        <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="lp-avoid">
+    <p class="lp-avoid-text"><strong>Не начинай ещё одну диету,</strong> пока не узнаешь свой тип жиросжигания. Без диагностики любой план — лотерея.</p>
+  </div>
+
+  <div class="lp-success">
+    <span class="lp-success-star">✨</span>
+    <p class="lp-success-text">После теста ты получишь персональный разбор и чёткое понимание, что делать дальше. Без гаданий и жёстких ограничений.</p>
+  </div>
+
+</section>
+
+<!-- ═══════════════ QUIZ ═══════════════ -->
+<section class="screen" id="screen-quiz">
+  <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="progressFill"></div></div>
+  <div class="container">
+    <div class="quiz-wrap">
+
+      <!-- name input -->
+      <div id="step-name" class="quiz-block">
+        <div class="quiz-step">Знакомство</div>
+        <h2 class="quiz-question">Привет! Давай <span class="quiz-name">познакомимся</span>. Как тебя зовут?</h2>
+        <div class="field-wrap">
+          <input type="text" class="field-input" id="nameInput" placeholder="Ваше имя" autocomplete="given-name" maxlength="40">
+          <div class="field-error" id="nameError">Введите имя — минимум 2 буквы</div>
+        </div>
+        <button class="btn-primary" id="nameBtn" onclick="submitName()">
+          Дальше
+          <svg viewBox="0 0 20 20" fill="none">
+            <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- questions container — built dynamically -->
+      <div id="step-question" style="display:none;">
+        <div class="quiz-step" id="qStep">Вопрос 1 из 7</div>
+        <h2 class="quiz-question" id="qTitle"></h2>
+        <div class="options" id="qOptions"></div>
+        <button class="btn-primary" id="qBtn" disabled onclick="submitAnswer()">
+          Дальше
+          <svg viewBox="0 0 20 20" fill="none">
+            <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- email -->
+      <div id="step-email" style="display:none;">
+        <div class="quiz-step">Последний шаг</div>
+        <h2 class="quiz-question"><span class="quiz-name" id="emailName">Имя</span>!</h2>
+        <p style="font-size:15px;color:var(--gray-600);line-height:1.5;margin-bottom:22px;font-weight:500;">Куда прислать твой результат и PDF «5 продуктов, которые убивают талию»?</p>
+        <div class="field-wrap">
+          <input type="email" class="field-input" id="emailInput" placeholder="your@email.com" autocomplete="email">
+          <div class="field-error" id="emailError">Введите корректный email</div>
+          <p class="field-hint">🔒 Без спама. Только результат и полезные советы.</p>
+        </div>
+        <button class="btn-primary" id="emailBtn" onclick="submitEmail()">
+          Получить результат
+          <svg viewBox="0 0 20 20" fill="none">
+            <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ RESULT ═══════════════ -->
+<section class="screen" id="screen-result">
+  <div class="result-bg">
+
+    <div class="result-hero">
+      <div class="result-eyebrow">🔥 Твой результат готов</div>
+      <h2 class="result-greeting"><span id="resName">Имя</span>, твой результат готов <span class="fire">🔥</span></h2>
+      <div class="result-type-box"><span class="result-type-label">Твой тип</span></div>
+      <div class="result-type-name" id="resTypeName">—</div>
+      <p class="result-diag" id="resDiag"></p>
+    </div>
+
+    <div class="result-card">
+      <h3>🎁 Забери PDF-гайд</h3>
+      <p>«5 продуктов, которые убивают твою талию» — конкретный список и замены, без воды.</p>
+      <a href="#" class="btn-secondary" onclick="event.preventDefault(); alert('Здесь будет ссылка на скачивание PDF');">
+        Скачать PDF
+        <svg viewBox="0 0 16 16" fill="none">
+          <path d="M8 2v9M3 8l5 5 5-5M2 14h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="result-bridge">
+      <div class="bridge-eyebrow">Что дальше</div>
+      <h2 class="bridge-h2">Знание без системы не работает</h2>
+      <p class="bridge-text">Ты знаешь свой тип. Знаешь, какие продукты мешают талии. Но нужен план, который учтёт <strong>именно твой</strong> тип жиросжигания.</p>
+
+      <div class="course-features">
+        <div class="course-feat-row"><span class="icon">🔥</span><span>3 класса тренировок — тело не привыкает</span></div>
+        <div class="course-feat-row"><span class="icon">🥗</span><span>Питание без голодовок — без срывов</span></div>
+        <div class="course-feat-row"><span class="icon">🎯</span><span>Чёткий план на 45 дней — не надо думать</span></div>
+      </div>
+
+      <div class="bridge-personal">
+        <div class="bridge-personal-label">Лично для тебя</div>
+        <div class="bridge-personal-text" id="resPersonal"></div>
+      </div>
+
+      <a href="https://gymteam.ru/l/fatburning" class="btn-primary" onclick="event.preventDefault(); alert('Здесь будет переход на страницу курса');">
+        Перейти на страницу курса
+        <svg viewBox="0 0 20 20" fill="none">
+          <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="proof-strip">
+      <div class="proof-num">330 000+</div>
+      <div class="proof-txt">девушек уже прошли этот путь</div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="foot">
+  <img src="logo.svg" alt="GymTeam">
+  <p class="foot-text">Программы чемпионки России по фитнес-бикини<br><a href="#">gymteam.ru</a></p>
+</footer>
+
+<script>
+const STORAGE_KEY = 'gymteam_quiz_state';
+
+const QUESTIONS = [
+  {
+    id: 'q1',
+    title: 'Что ты хочешь <span class="quiz-name">в первую очередь</span>, {NAME}?',
+    options: [
+      { text: 'Похудеть на 5–10 кг',                          weights: { A: 2, B: 0, V: 1, G: 1 } },
+      { text: 'Убрать живот и бока',                          weights: { A: 1, B: 0, V: 3, G: 2 } },
+      { text: 'Подтянуть всё тело, убрать дряблость',         weights: { A: 0, B: 2, V: 1, G: 1 } },
+      { text: 'Увидеть рельеф и мышечный тонус',              weights: { A: 0, B: 3, V: 0, G: 1 } }
+    ]
+  },
+  {
+    id: 'q2',
+    title: 'Что ты <span class="quiz-name">уже пробовала</span>, чтобы похудеть?',
+    options: [
+      { text: 'Диеты, голодовки, детоксы',                    weights: { A: 4, B: 0, V: 1, G: 1 } },
+      { text: 'Марафоны и онлайн-программы',                  weights: { A: 1, B: 1, V: 1, G: 2 } },
+      { text: 'Тренажёрный зал, кардио',                      weights: { A: 0, B: 4, V: 0, G: 1 } },
+      { text: 'Всё вместе, и ничего не сработало надолго',    weights: { A: 2, B: 1, V: 3, G: 1 } },
+      { text: 'Почти ничего, я новичок',                      weights: { A: 0, B: 0, V: 1, G: 1 } }
+    ]
+  },
+  {
+    id: 'q3',
+    title: 'Как часто ты <span class="quiz-name">тренируешься</span> сейчас?',
+    options: [
+      { text: 'Вообще не тренируюсь',                         weights: { A: 1, B: 0, V: 2, G: 1 } },
+      { text: '1–2 раза в неделю, когда есть силы',           weights: { A: 0, B: 0, V: 2, G: 2 } },
+      { text: '3–4 раза в неделю стабильно',                  weights: { A: 0, B: 1, V: 1, G: 2 } },
+      { text: '5+ раз, но результата нет',                    weights: { A: 1, B: 4, V: 2, G: 0 } }
+    ]
+  },
+  {
+    id: 'q4',
+    title: 'Что лучше всего описывает <span class="quiz-name">твоё питание</span>?',
+    options: [
+      { text: 'Стараюсь есть правильно, но срываюсь вечером', weights: { A: 0, B: 0, V: 4, G: 2 } },
+      { text: 'Считаю калории, всё записываю',                weights: { A: 3, B: 1, V: 1, G: 1 } },
+      { text: 'Ем мало, но вес стоит',                        weights: { A: 5, B: 0, V: 1, G: 1 } },
+      { text: 'Питаюсь нормально, не понимаю, почему не худею', weights: { A: 0, B: 0, V: 1, G: 5 } }
+    ]
+  },
+  {
+    id: 'q5',
+    title: 'Когда ты <span class="quiz-name">срываешься</span> с питания?',
+    options: [
+      { text: 'Вечером, после тяжёлого дня',                  weights: { A: 0, B: 0, V: 4, G: 2 } },
+      { text: 'На выходных, когда режим ломается',            weights: { A: 0, B: 0, V: 1, G: 3 } },
+      { text: 'В компании / на праздниках',                   weights: { A: 0, B: 0, V: 2, G: 2 } },
+      { text: 'Я не срываюсь, я просто не худею',             weights: { A: 3, B: 1, V: 0, G: 3 } }
+    ]
+  },
+  {
+    id: 'q6',
+    title: 'Что беспокоит больше всего <span class="quiz-name">в зоне живота</span>?',
+    options: [
+      { text: 'Постоянное вздутие и тяжесть',                 weights: { A: 1, B: 0, V: 2, G: 4 } },
+      { text: 'Жир на животе, который не уходит ни на каких диетах', weights: { A: 1, B: 0, V: 4, G: 2 } },
+      { text: 'Дряблость и растянутая кожа',                  weights: { A: 1, B: 3, V: 1, G: 0 } },
+      { text: 'Талия есть, но хочется рельеф и кубики',       weights: { A: 0, B: 3, V: 0, G: 1 } }
+    ]
+  },
+  {
+    id: 'q7',
+    title: 'Сколько <span class="quiz-name">времени</span> готова уделять тренировкам в день?',
+    options: [
+      { text: '15–20 минут, больше не выкроить',              weights: { A: 1, B: 0, V: 2, G: 1 } },
+      { text: '30–40 минут стабильно',                        weights: { A: 1, B: 1, V: 1, G: 1 } },
+      { text: '45–60 минут, готова вкладываться',             weights: { A: 0, B: 2, V: 0, G: 1 } },
+      { text: 'Зависит от дня, нужен гибкий план',            weights: { A: 1, B: 0, V: 2, G: 2 } }
+    ]
+  }
+];
+
+const TYPES = {
+  A: {
+    name: 'Голодная диета',
+    diag: 'Твой жир не уходит, потому что ты <strong>ешь слишком мало</strong>. Организм включил режим энергосбережения и держит каждый грамм. Метаболизм замедлен. Узнаёшь себя?',
+    personal: 'В курсе есть блок по разгону метаболизма — ты перестанешь голодать и начнёшь худеть.'
+  },
+  B: {
+    name: 'Кардио-наркоманка',
+    diag: 'Ты делаешь много кардио, теряешь мышцы — а жир остаётся на местах. Без мышечного каркаса <strong>метаболизм низкий</strong>. Жиру нечем сжигаться. Узнаёшь себя?',
+    personal: 'В курсе 3 класса тренировок, включая силовой — ты нарастишь мышцы, которые жгут жир в покое.'
+  },
+  V: {
+    name: 'Гормональные качели',
+    diag: 'Твой главный враг — <strong>кортизол</strong>. Стресс, недосып, тренировки на износ — тело включает режим «энергосбережения». Жир с живота не уходит, даже на дефиците. Узнаёшь себя?',
+    personal: 'В курсе есть блок про кортизол и восстановление — ты уберёшь жир с живота без изнурительных тренировок.'
+  },
+  G: {
+    name: 'Скрытый сахар',
+    diag: 'Ты думаешь, что питаешься правильно, но «полезные» перекусы и <strong>скрытый сахар</strong> тормозят прогресс. Организм на инсулиновых качелях и не отдаёт жир. Узнаёшь себя?',
+    personal: 'В курсе план питания без скрытого сахара — ты уберёшь инсулиновые качели и запустишь жиросжигание.'
+  }
+};
+
+let state = {
+  name: '',
+  answers: {},
+  qIndex: 0,
+  email: ''
+};
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const saved = JSON.parse(raw);
+      if (saved && typeof saved === 'object') state = { ...state, ...saved };
+    }
+  } catch (e) {}
+}
+
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+}
+
+function clearState() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function setProgress(pct) {
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+function setTopTag(text) {
+  document.getElementById('topTag').textContent = text;
+}
+
+function startQuiz() {
+  if (state.name) {
+    if (state.qIndex < 7) renderQuestion();
+    else showEmail();
+  } else {
+    showScreen('screen-quiz');
+    showNameStep();
+  }
+}
+
+function showNameStep() {
+  document.getElementById('step-name').style.display = 'block';
+  document.getElementById('step-question').style.display = 'none';
+  document.getElementById('step-email').style.display = 'none';
+  setProgress(5);
+  setTopTag('Знакомство');
+  setTimeout(() => document.getElementById('nameInput').focus(), 100);
+}
+
+function submitName() {
+  const input = document.getElementById('nameInput');
+  const errEl = document.getElementById('nameError');
+  const value = input.value.trim();
+  const valid = /^[А-Яа-яЁёA-Za-z\s\-]{2,}$/.test(value);
+  if (!valid) {
+    errEl.classList.add('show');
+    input.style.borderColor = 'var(--red)';
+    return;
+  }
+  errEl.classList.remove('show');
+  input.style.borderColor = '';
+  state.name = value;
+  state.qIndex = 0;
+  saveState();
+  showScreen('screen-quiz');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  document.getElementById('step-name').style.display = 'none';
+  document.getElementById('step-email').style.display = 'none';
+  document.getElementById('step-question').style.display = 'block';
+  showScreen('screen-quiz');
+
+  const q = QUESTIONS[state.qIndex];
+  const stepNum = state.qIndex + 1;
+  document.getElementById('qStep').textContent = `Вопрос ${stepNum} из 7`;
+  setTopTag(`Вопрос ${stepNum} из 7`);
+  document.getElementById('qTitle').innerHTML = q.title.replace('{NAME}', escapeHtml(state.name));
+
+  const optsEl = document.getElementById('qOptions');
+  optsEl.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const card = document.createElement('button');
+    card.className = 'option-card';
+    card.type = 'button';
+    card.innerHTML = `
+      <span class="option-radio"></span>
+      <span class="option-text">${escapeHtml(opt.text)}</span>
+    `;
+    card.onclick = () => selectOption(i, card);
+    optsEl.appendChild(card);
+  });
+
+  const btn = document.getElementById('qBtn');
+  btn.disabled = true;
+  btn.textContent = state.qIndex === 6 ? 'К результату' : 'Дальше';
+  btn.innerHTML = (state.qIndex === 6 ? 'К результату' : 'Дальше') + ` <svg viewBox="0 0 20 20" fill="none"><path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>`;
+
+  const pct = Math.round(((state.qIndex + 1) / 9) * 100);
+  setProgress(pct);
+}
+
+function selectOption(idx, cardEl) {
+  document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+  cardEl.classList.add('selected');
+  state.answers['q' + (state.qIndex + 1)] = idx;
+  saveState();
+  document.getElementById('qBtn').disabled = false;
+}
+
+function submitAnswer() {
+  if (state.qIndex < 6) {
+    state.qIndex++;
+    saveState();
+    renderQuestion();
+  } else {
+    state.qIndex = 7;
+    saveState();
+    showEmail();
+  }
+}
+
+function showEmail() {
+  document.getElementById('step-name').style.display = 'none';
+  document.getElementById('step-question').style.display = 'none';
+  document.getElementById('step-email').style.display = 'block';
+  document.getElementById('emailName').textContent = state.name + '!';
+  setTopTag('Email');
+  setProgress(95);
+  showScreen('screen-quiz');
+  setTimeout(() => document.getElementById('emailInput').focus(), 100);
+}
+
+function submitEmail() {
+  const input = document.getElementById('emailInput');
+  const errEl = document.getElementById('emailError');
+  const value = input.value.trim();
+  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  if (!valid) {
+    errEl.classList.add('show');
+    input.style.borderColor = 'var(--red)';
+    return;
+  }
+  errEl.classList.remove('show');
+  input.style.borderColor = '';
+  state.email = value;
+  saveState();
+  showResult();
+}
+
+function calcResult() {
+  const scores = { A: 0, B: 0, V: 0, G: 0 };
+  for (let i = 0; i < QUESTIONS.length; i++) {
+    const ansIdx = state.answers['q' + (i + 1)];
+    if (ansIdx === undefined) continue;
+    const w = QUESTIONS[i].options[ansIdx].weights;
+    scores.A += w.A;
+    scores.B += w.B;
+    scores.V += w.V;
+    scores.G += w.G;
+  }
+  const order = ['V', 'A', 'G', 'B'];
+  let winner = order[0];
+  let max = scores[winner];
+  for (const k of order) {
+    if (scores[k] > max) { max = scores[k]; winner = k; }
+  }
+  return { winner, scores };
+}
+
+function showResult() {
+  const { winner } = calcResult();
+  const t = TYPES[winner];
+  document.getElementById('resName').textContent = state.name;
+  document.getElementById('resTypeName').textContent = t.name;
+  document.getElementById('resDiag').innerHTML = t.diag;
+  document.getElementById('resPersonal').textContent = t.personal;
+  setTopTag('Твой результат');
+  setProgress(100);
+  showScreen('screen-result');
+  clearState();
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  const nameStep = document.getElementById('step-name');
+  const emailStep = document.getElementById('step-email');
+  if (nameStep && nameStep.style.display !== 'none' && document.activeElement && document.activeElement.id === 'nameInput') {
+    e.preventDefault();
+    submitName();
+  }
+  if (emailStep && emailStep.style.display !== 'none' && document.activeElement && document.activeElement.id === 'emailInput') {
+    e.preventDefault();
+    submitEmail();
+  }
+});
+
+loadState();
+</script>
+
+</body>
+</html>
