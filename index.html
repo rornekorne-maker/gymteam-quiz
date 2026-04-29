@@ -60,17 +60,20 @@ body {
   .lp-hero {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
+    grid-template-rows: 620px;
     align-items: stretch;
-    min-height: 620px;
   }
   .lp-hero-img-wrap {
     height: 100%;
-    min-height: 620px;
+    min-height: 0;
     grid-column: 2;
     grid-row: 1;
+    overflow: hidden;
   }
   .lp-hero-img {
-    object-position: 55% 30%;
+    width: 100%;
+    height: 100%;
+    object-position: 50% 25%;
     filter: brightness(0.78) contrast(1.05);
   }
   .lp-hero-overlay {
@@ -161,18 +164,25 @@ body {
   .lp-success-inline { padding: 18px 24px; }
   .lp-success-text { font-size: 14px; }
 
-  /* QUIZ */
+  /* QUIZ — компактная карточка по центру */
   .quiz-progress-bar { top: 68px; height: 5px; }
-  .quiz-wrap { max-width: 640px; margin: 0 auto; padding: 64px 32px 72px; }
-  .quiz-question { font-size: 36px; line-height: 1.05; margin-bottom: 36px; }
-  .quiz-step { font-size: 12px; margin-bottom: 20px; }
-  .options { gap: 12px; margin-bottom: 36px; }
+  .quiz-wrap {
+    max-width: 640px;
+    margin: 48px auto;
+    padding: 64px 56px 56px;
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+  }
+  .quiz-question { font-size: 32px; line-height: 1.1; margin-bottom: 32px; }
+  .quiz-step { font-size: 11px; margin-bottom: 18px; }
+  .options { gap: 10px; margin-bottom: 32px; }
   .option-card { padding: 18px 22px; }
-  .option-text { font-size: 16px; }
+  .option-text { font-size: 15.5px; }
   .field-input { padding: 18px 22px; font-size: 17px; }
   #step-question .btn-primary,
   #step-name .btn-primary,
-  #step-email .btn-primary { max-width: 360px; }
+  #step-email .btn-primary { max-width: 100%; }
 
   .quiz-topic-banner { padding: 14px 40px; font-size: 12px; }
 
@@ -530,7 +540,18 @@ body {
   margin-left: 4px;
 }
 
-.quiz-wrap { padding: 28px 20px 36px; }
+/* квиз: серый фон + центрированная карточка */
+#screen-quiz {
+  background: var(--gray-50);
+  min-height: 100vh;
+}
+
+.quiz-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 28px 20px 36px;
+  background: var(--white);
+}
 .quiz-step {
   font-family: 'Oswald', sans-serif;
   font-size: 11px;
@@ -1022,8 +1043,7 @@ body {
     <span class="topic-stage" id="topicStage">Знакомство</span>
   </div>
   <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="progressFill"></div></div>
-  <div class="container">
-    <div class="quiz-wrap">
+  <div class="quiz-wrap">
 
       <!-- name input -->
       <div id="step-name" class="quiz-block">
@@ -1073,7 +1093,6 @@ body {
       </div>
 
     </div>
-  </div>
 </section>
 
 <!-- ═══════════════ RESULT ═══════════════ -->
