@@ -50,6 +50,107 @@ body {
 
 .container { max-width: 420px; margin: 0 auto; padding: 0 20px; }
 
+/* ─── DESKTOP ADAPTIVE ─── */
+@media (min-width: 768px) {
+  .top-bar { padding: 16px 32px; }
+  .top-bar img { height: 30px; }
+
+  /* landing hero — split layout */
+  .lp-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    min-height: 560px;
+  }
+  .lp-hero-img {
+    height: 100%;
+    min-height: 560px;
+    object-position: 40% 25%;
+    filter: brightness(0.75) contrast(1.05);
+  }
+  .lp-hero-overlay {
+    background: linear-gradient(90deg, var(--black) 0%, rgba(14,14,16,0.4) 100%);
+  }
+  .lp-hero-content {
+    padding: 64px 56px;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-row: 1;
+    grid-column: 1;
+    z-index: 3;
+    max-width: 600px;
+  }
+  .lp-h1 { font-size: 48px; line-height: 1; }
+  .lp-hero-content .btn-primary { max-width: 360px; }
+
+  .lp-section { padding: 64px 32px; }
+  .lp-section > * { max-width: 720px; margin-left: auto; margin-right: auto; }
+  .lp-h2 { font-size: 38px; }
+  .prob-list {
+    flex-direction: row;
+    gap: 14px;
+  }
+  .prob-card { flex: 1; padding: 20px; flex-direction: column; align-items: flex-start; }
+  .prob-icon { margin-bottom: 8px; }
+  .prob-text { font-size: 14.5px; }
+
+  .check-list { gap: 18px; }
+  .lp-plan .btn-primary { max-width: 420px; margin: 0 auto; }
+  .lp-success { max-width: 720px; margin: 0 auto 32px; }
+
+  /* quiz */
+  .quiz-progress-bar { top: 62px; height: 5px; }
+  .quiz-wrap { max-width: 640px; margin: 0 auto; padding: 56px 32px 64px; }
+  .quiz-question { font-size: 36px; line-height: 1.05; margin-bottom: 32px; }
+  .quiz-step { font-size: 12px; margin-bottom: 18px; }
+  .options { gap: 12px; margin-bottom: 32px; }
+  .option-card { padding: 18px 20px; }
+  .option-text { font-size: 16px; }
+  .field-input { padding: 18px 22px; font-size: 17px; }
+  .quiz-wrap .btn-primary { max-width: 360px; }
+  #step-question .btn-primary,
+  #step-name .btn-primary,
+  #step-email .btn-primary { max-width: 360px; }
+
+  /* quiz topic banner */
+  .quiz-topic-banner { padding: 14px 32px; }
+
+  /* result */
+  .result-hero { padding: 64px 32px; text-align: left; }
+  .result-hero > * { max-width: 720px; margin-left: auto; margin-right: auto; }
+  .result-type-name { font-size: 56px; }
+  .result-greeting { font-size: 32px; }
+  .result-diag { font-size: 17px; max-width: 640px; }
+
+  .result-card,
+  .result-bridge {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 32px;
+  }
+  .result-card { margin-top: -1px; }
+  .result-card h3 { font-size: 26px; }
+  .bridge-h2 { font-size: 32px; }
+  .result-bridge .btn-primary { max-width: 420px; }
+
+  .proof-strip { padding: 28px; }
+  .proof-num { font-size: 36px; }
+
+  .foot { padding: 28px; }
+}
+
+@media (min-width: 1100px) {
+  .lp-hero-content { padding: 80px 80px 80px 96px; }
+  .lp-h1 { font-size: 56px; }
+  .lp-section { padding: 80px 32px; }
+  .lp-h2 { font-size: 44px; }
+  .quiz-question { font-size: 40px; }
+  .result-type-name { font-size: 68px; }
+}
+
 /* ─── HEADER ─── */
 .top-bar {
   background: var(--black);
@@ -78,9 +179,9 @@ body {
 }
 .lp-hero-img {
   width: 100%;
-  height: 320px;
+  height: 360px;
   object-fit: cover;
-  object-position: center 25%;
+  object-position: 35% 30%;
   display: block;
   filter: brightness(0.55) contrast(1.1) saturate(0.85);
 }
@@ -250,6 +351,35 @@ body {
   background: var(--red);
   width: 0;
   transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* квизный топик-баннер — что это за тест */
+.quiz-topic-banner {
+  background: var(--black-2);
+  color: var(--white);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.quiz-topic-banner .flame { font-size: 14px; }
+.quiz-topic-banner .topic-text { color: var(--white); }
+.quiz-topic-banner .topic-text strong { color: var(--red); font-weight: 700; }
+.quiz-topic-banner .topic-stage {
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  border-left: 1px solid rgba(255,255,255,0.15);
+  padding-left: 10px;
+  margin-left: 4px;
 }
 
 .quiz-wrap { padding: 28px 20px 36px; }
@@ -532,6 +662,51 @@ body {
   font-weight: 600;
 }
 
+/* UTP under course button */
+.utp-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gray-100);
+}
+.utp-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.utp-icon-wrap {
+  width: 38px; height: 38px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.utp-icon { font-size: 18px; line-height: 1; }
+.utp-text { display: flex; flex-direction: column; gap: 1px; }
+.utp-text strong {
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.utp-text span {
+  font-size: 12px;
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .utp-row { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .utp-item { flex-direction: column; align-items: flex-start; }
+  .utp-icon-wrap { width: 44px; height: 44px; margin-bottom: 4px; }
+  .utp-icon { font-size: 22px; }
+  .utp-text strong { font-size: 14px; }
+}
+
 .proof-strip {
   background: var(--black);
   color: var(--white);
@@ -682,6 +857,11 @@ body {
 
 <!-- ═══════════════ QUIZ ═══════════════ -->
 <section class="screen" id="screen-quiz">
+  <div class="quiz-topic-banner">
+    <span class="flame">🔥</span>
+    <span class="topic-text">Тест: <strong>твой тип жиросжигания</strong></span>
+    <span class="topic-stage" id="topicStage">Знакомство</span>
+  </div>
   <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="progressFill"></div></div>
   <div class="container">
     <div class="quiz-wrap">
@@ -718,7 +898,7 @@ body {
       <!-- email -->
       <div id="step-email" style="display:none;">
         <div class="quiz-step">Последний шаг</div>
-        <h2 class="quiz-question"><span class="quiz-name" id="emailName">Имя</span>!</h2>
+        <h2 class="quiz-question"><span class="quiz-name" id="emailName">Имя</span></h2>
         <p style="font-size:15px;color:var(--gray-600);line-height:1.5;margin-bottom:22px;font-weight:500;">Куда прислать твой результат и PDF «5 продуктов, которые убивают талию»?</p>
         <div class="field-wrap">
           <input type="email" class="field-input" id="emailInput" placeholder="your@email.com" autocomplete="email">
@@ -742,8 +922,8 @@ body {
   <div class="result-bg">
 
     <div class="result-hero">
-      <div class="result-eyebrow">🔥 Твой результат готов</div>
-      <h2 class="result-greeting"><span id="resName">Имя</span>, твой результат готов <span class="fire">🔥</span></h2>
+      <div class="result-eyebrow">🔥 Результат готов</div>
+      <h2 class="result-greeting"><span id="resName">Имя</span>, результат готов <span class="fire">🔥</span></h2>
       <div class="result-type-box"><span class="result-type-label">Твой тип</span></div>
       <div class="result-type-name" id="resTypeName">—</div>
       <p class="result-diag" id="resDiag"></p>
@@ -782,6 +962,21 @@ body {
           <path d="M4 10h12M16 10l-5-5M16 10l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
         </svg>
       </a>
+
+      <div class="utp-row">
+        <div class="utp-item">
+          <div class="utp-icon-wrap"><span class="utp-icon">🛡️</span></div>
+          <div class="utp-text"><strong>Гарантия 14 дней</strong><span>Не подойдёт — вернём деньги</span></div>
+        </div>
+        <div class="utp-item">
+          <div class="utp-icon-wrap"><span class="utp-icon">📱</span></div>
+          <div class="utp-text"><strong>Доступ навсегда</strong><span>В приложении и на сайте</span></div>
+        </div>
+        <div class="utp-item">
+          <div class="utp-icon-wrap"><span class="utp-icon">⚡</span></div>
+          <div class="utp-text"><strong>Старт сразу</strong><span>Тренируйся уже сегодня вечером</span></div>
+        </div>
+      </div>
     </div>
 
     <div class="proof-strip">
@@ -794,7 +989,7 @@ body {
 
 <footer class="foot">
   <img src="logo.svg" alt="GymTeam">
-  <p class="foot-text">Программы чемпионки России по фитнес-бикини<br><a href="#">gymteam.ru</a></p>
+  <p class="foot-text"><a href="#">gymteam.ru</a></p>
 </footer>
 
 <script>
@@ -936,6 +1131,11 @@ function setTopTag(text) {
   document.getElementById('topTag').textContent = text;
 }
 
+function setTopicStage(text) {
+  const el = document.getElementById('topicStage');
+  if (el) el.textContent = text;
+}
+
 function startQuiz() {
   if (state.name) {
     if (state.qIndex < 7) renderQuestion();
@@ -952,6 +1152,7 @@ function showNameStep() {
   document.getElementById('step-email').style.display = 'none';
   setProgress(5);
   setTopTag('Знакомство');
+  setTopicStage('Знакомство');
   setTimeout(() => document.getElementById('nameInput').focus(), 100);
 }
 
@@ -984,6 +1185,7 @@ function renderQuestion() {
   const stepNum = state.qIndex + 1;
   document.getElementById('qStep').textContent = `Вопрос ${stepNum} из 7`;
   setTopTag(`Вопрос ${stepNum} из 7`);
+  setTopicStage(`Вопрос ${stepNum} / 7`);
   document.getElementById('qTitle').innerHTML = q.title.replace('{NAME}', escapeHtml(state.name));
 
   const optsEl = document.getElementById('qOptions');
@@ -1033,8 +1235,9 @@ function showEmail() {
   document.getElementById('step-name').style.display = 'none';
   document.getElementById('step-question').style.display = 'none';
   document.getElementById('step-email').style.display = 'block';
-  document.getElementById('emailName').textContent = state.name + '!';
+  document.getElementById('emailName').textContent = state.name;
   setTopTag('Email');
+  setTopicStage('Расчёт результата');
   setProgress(95);
   showScreen('screen-quiz');
   setTimeout(() => document.getElementById('emailInput').focus(), 100);
