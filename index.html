@@ -60,7 +60,6 @@ body {
   .lp-hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 640px;
     align-items: stretch;
   }
   .lp-hero-img-wrap {
@@ -80,18 +79,18 @@ body {
     background: linear-gradient(90deg, var(--black) 0%, rgba(14,14,16,0.45) 25%, rgba(14,14,16,0) 100%);
   }
   .lp-hero-content {
-    padding: 56px 96px 56px 0;
+    padding: 32px 96px 56px 0;
     margin: 0 0 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     grid-row: 1;
     grid-column: 1;
     z-index: 3;
     width: 100%;
     max-width: 600px;
   }
-  .lp-hero-top { margin-bottom: 32px; }
+  .lp-hero-top { margin-bottom: 40px; }
   .lp-hero-logo { height: 32px; }
   .lp-h1 { font-size: 52px; line-height: 0.96; margin-bottom: 22px; }
   .lp-hero-sub { font-size: 17px; margin-bottom: 28px; max-width: 520px; }
@@ -241,7 +240,7 @@ body {
 }
 
 @media (min-width: 1100px) {
-  .lp-hero-content { padding: 80px 96px 80px 0; }
+  .lp-hero-content { padding: 40px 96px 80px 0; }
   .lp-h1 { font-size: 64px; }
   .lp-hero-sub { font-size: 18px; }
   .lp-h2 { font-size: 52px; }
@@ -251,9 +250,8 @@ body {
 }
 
 @media (min-width: 1400px) {
-  .lp-hero { grid-template-rows: 680px; }
   .lp-hero-content {
-    padding: 88px 120px 88px 0;
+    padding: 48px 120px 88px 0;
     max-width: 640px;
   }
 }
